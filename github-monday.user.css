@@ -1,0 +1,37 @@
+/* ==UserStyle==
+@name         github-monday
+@namespace    github.com/Karl255
+@version      1.0.0
+@description  A style to fix the calendar's first day of week on GitHub user profile pages.
+@homepageURL  https://github.com/Karl255/github-monday
+@license      unlicense
+@preprocessor default
+==/UserStyle== */
+
+@-moz-document domain("github.com") {
+	/* all days up a little */
+	svg.js-calendar-graph-svg > g > g > rect {
+		transform: translate(0px, -13px);
+	}
+	
+	/* all sundays all the way down and 1 to the left */
+	svg.js-calendar-graph-svg > g > g > rect:first-child {
+		transform: translate(-13px, 78px);
+	}
+	
+	/* hide first sunday (otherwise it'll be outside the box) */
+	svg.js-calendar-graph-svg > g > g:first-child > rect:first-child {
+		display: none;
+	}
+	
+	/* adjust day texts */
+	svg.js-calendar-graph-svg > g > text.wday {
+		transform: translate(0px, -13px);
+	}
+	
+	/* show and reposition sunday text */
+	svg.js-calendar-graph-svg > g > text.wday:nth-child(66) {
+		transform: translate(0px, 78px);
+		display: inline !important;
+	}
+}
