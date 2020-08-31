@@ -1,0 +1,135 @@
+/* ==UserStyle==
+@name         e-Dnevnik Material Dark
+@author       Karl_255
+@namespace    github.com/Karl255
+@version      0.1.0
+@description  Material UI tamna tema za e-Dnevnik (A Material dark theme for e-Dnevnik)
+@homepageURL  https://github.com/Karl255/UserCSS-Styles
+@supportURL   https://github.com/Karl255/UserCSS-Styles/issues
+@updateURL    https://github.com/Karl255/UserCSS-Styles/e-dnevnik-material-dark.user.css
+@license      unlicense
+@preprocessor default
+==/UserStyle== */
+
+@-moz-document domain("ocjene.skole.hr") {
+	:root {
+		--surface-clr: #ffffff0b;
+	}
+	
+	/* general stuff and fixes */
+	
+	html,
+	body {
+		height: 100%
+	}
+	
+	.show .overall-grade {
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+	
+	.content {
+		overflow-y: auto;
+	}
+	
+	/* text - title */
+	/* inheriting from html */
+	html,
+	/* more specifity is required for input (in firefox at least) */
+	input {
+		color: white;
+	}
+	
+	/* text - normal */
+	p,
+	a,
+	label,
+	.footer {
+		color: #cacaca;
+	}
+	
+	/* text - smallprint */
+	.login-body-box-smallprint > span {
+		color: #868686;
+	}
+	
+	/* text - rest */
+	.class-alerts ul li,
+	.dropdown-menu-wrapper .dropdown-title,
+	.export-menu a.disabled {
+		color: #2c2c2c;
+	}
+	
+	.school-name .schoolyear span:nth-child(2) {
+		color: white;
+	}
+	
+	/* text - logo */
+	.logo,
+	.logo-text,
+	.logo-link {
+		color: #A9ABB0;
+	}
+	
+	
+	/* backgrounds */
+	body {
+		background: #121212 !important;
+	}
+
+	#page-wrapper,
+	.login-body-box,
+	.past-schoolyear .class-info,
+	input[type="text"],
+	input[type="password"],
+	.class-menu-vertical .show li {
+		background: var(--surface-clr) !important;
+	}
+	
+	.content-menu {
+		background: #2D4759;
+	}
+	
+	.export-menu {
+		background: none;
+	}
+	
+	/* borders */
+	input[type="text"],
+	input[type="password"] {
+		border: none;
+	}
+	
+	.class,
+	.class-menu,
+	.class-menu-vertical .class-info .class-alerts,
+	.class-menu ul li,
+	.class-menu-vertical .class-menu li:last-of-type,
+	.export-menu,
+	.export-menu > div,
+	.list li
+	{
+		border-color: var(--surface-clr) !important;
+	}
+	
+	.list li span:first-of-type {
+		border-color: currentcolor;
+	}
+	
+	/* shadows and border replacements for elements with shadows (shadows were barely visible so I had to do that) */
+	#page-wrapper,
+	.login-body-box,
+	.class-menu-vertical .class-info,
+	.content-menu {
+		box-shadow: unset;
+	}
+	
+	#class-administration-menu,
+	.content-wrapper {
+		box-shadow: none;
+		border: 1px solid var(--surface-clr)
+	}
+	
+	
+	
+}

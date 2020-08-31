@@ -13,3 +13,8 @@ Short descriptions of each of my styles:
 
 ## github-monday
 A UserCSS style to fix the calendar's first day of week on GitHub user profiles. This is achived by moving the squares into the positions where they should be.
+
+## e-Dnevnik Material Dark
+Material UI tamna tema za [e-Dnevnik](https://ocjene.skole.hr).
+
+(Material UI dark theme for [e-Dnevnik](https://ocjene.skole.hr).)
