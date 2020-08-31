@@ -1,5 +1,5 @@
 # UserCSS-Styles
-My own small UserCSS styles which I wrote for various reasons.
+My own small UserCSS styles which I wrote for various reasons. Fell free to give me suggestiona and to comment on my code.
 
 # Installation
 First you'll need one of the following extensions:

@@ -1,26 +1,34 @@
 /* ==UserStyle==
 @name         e-Dnevnik Material Dark
-@author       Karl_255
+@author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      0.1.0
+@version      1.0.0
 @description  Material UI tamna tema za e-Dnevnik (A Material dark theme for e-Dnevnik)
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
 @updateURL    https://github.com/Karl255/UserCSS-Styles/e-dnevnik-material-dark.user.css
 @license      unlicense
-@preprocessor default
+@preprocessor less
+
+@var color accentColor "Accent color" #1D4E73
 ==/UserStyle== */
 
 @-moz-document domain("ocjene.skole.hr") {
 	:root {
-		--surface-clr: #ffffff0b;
+		--surface-color: #ffffff0b;
+		--accent-color: @accentColor;
+		--accent-color-light: lighten(@accentColor, 10%);
 	}
 	
-	/* general stuff and fixes */
-	
+	/*** general stuff and fixes ***/
 	html,
 	body {
-		height: 100%
+		min-height: 100%;
+	}
+	
+	#page-wrapper {
+		max-height: unset;
+		min-height: unset;
 	}
 	
 	.show .overall-grade {
@@ -28,40 +36,76 @@
 		border-bottom-right-radius: 10px;
 	}
 	
-	.content {
-		overflow-y: auto;
+	.dropdown-menu-wrapper ul li:last-child a {
+		border-bottom: none;
 	}
 	
-	/* text - title */
-	/* inheriting from html */
-	html,
-	/* more specifity is required for input (in firefox at least) */
-	input {
+	.dropdown-content {
+		border: 1px solid var(--surface-color);
+		border-top: none;
+		/* because box-sizing is content-box, the dropdown-content is the right width, but shifted 1px to the right */
+		transform: translatex(-1px);
+	}
+	
+	#class-administration-menu .selected {
+		position: relative;
+		
+		a {
+			color: var(--accent-color-light);
+		}
+		
+		&::after {
+			content: " ";
+			position: absolute;
+			bottom: 0;
+			background: var(--accent-color-light);
+			width: 100%;
+			height: 2px;
+			transform: translatex(-5px);
+		}
+	}
+	
+	/* good that I have negative grades, allows me to test this */
+	.table-container .negative {
+		background-color: #ff00002c;
+		
+		.flex-row {
+			background-color: unset;
+			-webkit-box-shadow: unset;
+			box-shadow: unset;
+		}
+	}
+	
+	.flex-table.row:last-child {
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+	}
+	
+	/*** text ***/
+	/* titles */
+	html, /* the title color wasn't set anywhere, eg. it inherited it from html */
+	.flex-table.header,
+	.school-name .schoolyear span:nth-child(2) {
 		color: white;
 	}
 	
-	/* text - normal */
+	/* normal text */
 	p,
 	a,
 	label,
-	.footer {
+	input,
+	.footer,
+	.section-text,
+	.flex-table {
 		color: #cacaca;
 	}
 	
-	/* text - smallprint */
-	.login-body-box-smallprint > span {
-		color: #868686;
-	}
-	
-	/* text - rest */
+	/* smallprint */
+	.login-body-box-smallprint > span,
 	.class-alerts ul li,
 	.dropdown-menu-wrapper .dropdown-title,
 	.export-menu a.disabled {
-		color: #2c2c2c;
-	}
-	
-	.school-name .schoolyear span:nth-child(2) {
-		color: white;
+		color: #7e7e7e;
 	}
 	
 	/* text - logo */
@@ -72,64 +116,96 @@
 	}
 	
 	
-	/* backgrounds */
+	/*** backgrounds ***/
+	/* base */
+	html,
 	body {
 		background: #121212 !important;
 	}
 
+	/* material ui layer */
 	#page-wrapper,
 	.login-body-box,
 	.past-schoolyear .class-info,
 	input[type="text"],
 	input[type="password"],
-	.class-menu-vertical .show li {
-		background: var(--surface-clr) !important;
+	.class-menu-vertical .show li,
+	.section-text {
+		background: var(--surface-color) !important;
 	}
 	
-	.content-menu {
-		background: #2D4759;
+	/* layers that can't be transparent */
+	.dropdown-content,
+	.dropdown-menu-header {
+		background: #262626;
 	}
 	
-	.export-menu {
+	/* accent background */
+	.content-menu,
+	.flex-table.header.first,
+	.dropdown-title {
+		background: var(--accent-color);
+	}
+	
+	/* transparent */
+	.content-menu div,
+	.flex-table.header,
+	.dropdown-menu-wrapper ul li a {
 		background: none;
 	}
 	
-	/* borders */
+	
+	/*** borders and shadows ***/
+	/* border removals */
 	input[type="text"],
-	input[type="password"] {
+	input[type="password"],
+	.section-text {
 		border: none;
 	}
 	
+	/* border recolor */
 	.class,
 	.class-menu,
 	.class-menu-vertical .class-info .class-alerts,
 	.class-menu ul li,
 	.class-menu-vertical .class-menu li:last-of-type,
-	.export-menu,
-	.export-menu > div,
-	.list li
-	{
-		border-color: var(--surface-clr) !important;
+	.list li,
+	.flex-table,
+	.flex-row,
+	.content-menu div,
+	.dropdown-menu-wrapper .dropdown-title,
+	.dropdown-menu-wrapper ul li a,
+	.dropdown-menu-header li {
+		border-color: var(--surface-color) !important;
 	}
 	
+	/* border recolor (lighter) */
+	.content-menu {
+		--surface-color: #ffffff21;
+	}
+	
+	/* text-colored border (separators) */
 	.list li span:first-of-type {
 		border-color: currentcolor;
 	}
 	
-	/* shadows and border replacements for elements with shadows (shadows were barely visible so I had to do that) */
+	/* shadow removals */
 	#page-wrapper,
 	.login-body-box,
 	.class-menu-vertical .class-info,
-	.content-menu {
+	.content-menu,
+	.dropdown-content,
+	#class-administration-menu .selected {
 		box-shadow: unset;
 	}
 	
+	/* border replacements for elements with shadows (shadows were barely visible so I had to do that) */
 	#class-administration-menu,
-	.content-wrapper {
-		box-shadow: none;
-		border: 1px solid var(--surface-clr)
+	.content-wrapper,
+	.dropdown-menu-header {
+		box-shadow: unset;
+		border: 1px solid var(--surface-color)
 	}
-	
 	
 	
 }
