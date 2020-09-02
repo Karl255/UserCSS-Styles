@@ -2,7 +2,7 @@
 @name         e-Dnevnik Material Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.0
+@version      1.0.1
 @description  Material UI tamna tema za e-Dnevnik (A Material dark theme for e-Dnevnik)
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -16,6 +16,7 @@
 @-moz-document domain("ocjene.skole.hr") {
 	:root {
 		--surface-color: #ffffff0b;
+		--surface-color-light: #ffffff21; 
 		--accent-color: @accentColor;
 		--accent-color-light: lighten(@accentColor, 10%);
 	}
@@ -66,7 +67,7 @@
 	}
 	
 	/* good that I have negative grades, allows me to test this */
-	.table-container .negative {
+	.table-container .flex-table.row.negative {
 		background-color: #ff00002c;
 		
 		.flex-row {
@@ -79,6 +80,25 @@
 	.flex-table.row:last-child {
 		border-bottom-left-radius: 10px;
 		border-bottom-right-radius: 10px;
+	}
+	
+	/* classes list horizontal scrollbar */
+	.classes {
+		padding-left: 0; /* having that padding there is just stupid so I removed it */
+		scrollbar-width: thin;
+		scrollbar-color: var(--surface-color-light) var(--surface-color);
+		
+		&::-webkit-scrollbar {
+			width: 8px;
+		}
+		
+		&::-webkit-scrollbar-track {
+			background: var(--surface-color);
+		}
+		
+		&::-webkit-scrollbar-thumb {
+			background: var(--surface-color-light);
+		}
 	}
 	
 	/*** text ***/
@@ -206,6 +226,4 @@
 		box-shadow: unset;
 		border: 1px solid var(--surface-color)
 	}
-	
-	
 }
