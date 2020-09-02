@@ -2,7 +2,7 @@
 @name         e-Dnevnik Material Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.1
+@version      1.1.0
 @description  Material UI tamna tema za e-Dnevnik (A Material dark theme for e-Dnevnik)
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -15,46 +15,87 @@
 
 @-moz-document domain("ocjene.skole.hr") {
 	:root {
+		--material-root-surface: #121212;
 		--surface-color: #ffffff0b;
-		--surface-color-light: #ffffff21; 
+		--surface-color-light: #ffffff21;
+		--surface-color-floating: #262626; /* for elements floating above other elements, such as dropdowns */
 		--accent-color: @accentColor;
 		--accent-color-light: lighten(@accentColor, 10%);
+		--accent-color-transparent: fade(@accentColor, 50%);
+		--text-title: #ffffff;
+		--text-normal: #cacaca;
+		--text-minor: #7e7e7e;
 	}
 	
-	/*** general stuff and fixes ***/
 	html,
 	body {
 		min-height: 100%;
+		background: var(--material-root-surface);
 	}
 	
+	/* title text */
+	html, /* the text color for titles isn't set anywhere, eg. it inherited it from html (well actually from nowhere, but whatever) */
+	.flex-table.header,
+	.school-name .schoolyear span:nth-child(2) {
+		color: var(--text-title);
+	}
+	
+	/* normal text */
+	p,
+	a,
+	label,
+	input,
+	.footer,
+	.section-text,
+	.flex-table {
+		color: var(--text-normal);
+	}
+	
+	/* minor text */
+	.login-body-box-smallprint > span,
+	.class-alerts ul li,
+	.export-menu a.disabled {
+		color: var(--text-minor);
+	}
+	
+	/* logo text */
+	.logo,
+	.logo-text,
+	.logo-link {
+		color: #A9ABB0;
+	}
+	
+	/* removing this stupid useless shit which breaks the webite from functioning properly */
 	#page-wrapper {
 		max-height: unset;
 		min-height: unset;
 	}
 	
-	.show .overall-grade {
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
+	/* material ui layers (should probably use hard-coded values as it is suggested in the guidelines) */
+	#page-wrapper,
+	.login-body-box,
+	.past-schoolyear .class-info {
+		background: var(--surface-color) !important;
 	}
 	
-	.dropdown-menu-wrapper ul li:last-child a {
-		border-bottom: none;
+	/* these elements don't need a border anyomre */
+	input[type="text"],
+	input[type="password"],
+	.section-text {
+		border: none;
+		background: var(--surface-color);
 	}
 	
-	.dropdown-content {
-		border: 1px solid var(--surface-color);
-		border-top: none;
-		/* because box-sizing is content-box, the dropdown-content is the right width, but shifted 1px to the right */
-		transform: translatex(-1px);
-	}
-	
+	/* currently selected tab */
 	#class-administration-menu .selected {
 		position: relative;
+		box-shadow: unset;
 		
 		a {
 			color: var(--accent-color-light);
 		}
 		
+		/* replacing the inset shadow (stupid solution tbh) with an ::after */
 		&::after {
 			content: " ";
 			position: absolute;
@@ -66,7 +107,7 @@
 		}
 	}
 	
-	/* good that I have negative grades, allows me to test this */
+	/* negative grade stuff, good that I have them, allows me to test it */
 	.table-container .flex-table.row.negative {
 		background-color: #ff00002c;
 		
@@ -77,17 +118,41 @@
 		}
 	}
 	
-	.flex-table.row:last-child {
-		border-bottom-left-radius: 10px;
-		border-bottom-right-radius: 10px;
+	/* elements inside the header of the main content in most pages */
+	.content-menu {
+		background: var(--accent-color);
+		
+		div {
+			border-color: var(--text-normal);
+			background: none;
+		}
 	}
+	
+	/* shadow removals in various places */
+	#page-wrapper,
+	.login-body-box,
+	.content-menu,
+	.dropdown-content {
+		box-shadow: unset;
+	}
+	
+	/* replacing shadows with borders in various places (shadows were barely visible so I had to do that) */
+	#class-administration-menu,
+	.content-wrapper,
+	.dropdown-menu-header {
+		box-shadow: unset;
+		border: 1px solid var(--surface-color)
+	}
+	
 	
 	/* classes list horizontal scrollbar */
 	.classes {
 		padding-left: 0; /* having that padding there is just stupid so I removed it */
+		/* styling it using the upcoming standard (firefox only atm) */
 		scrollbar-width: thin;
 		scrollbar-color: var(--surface-color-light) var(--surface-color);
 		
+		/* old webkit-based browser styling (chrome, new edge, opera, safari), eventually will be deprecated */
 		&::-webkit-scrollbar {
 			width: 8px;
 		}
@@ -101,129 +166,92 @@
 		}
 	}
 	
-	/*** text ***/
-	/* titles */
-	html, /* the title color wasn't set anywhere, eg. it inherited it from html */
-	.flex-table.header,
-	.school-name .schoolyear span:nth-child(2) {
-		color: white;
+	.class-menu-vertical {
+		.class,
+		.class-info {
+			box-shadow: unset;
+			
+			.class-alerts {
+				border-color: var(--surface-color)
+			}
+		}
+		
+		.class-menu {
+			border-color: var(--surface-color);
+			
+			ul li,
+			ul li:last-of-type {
+				border-color: var(--surface-color);
+			}
+			
+			/* fix for classes cards (bottom element clips over the rounded corners of parent) */
+			.overall-grade {
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+			}
+		}
+		
+		.show li {
+			background: var(--surface-color)
+		}
 	}
 	
-	/* normal text */
-	p,
-	a,
-	label,
-	input,
-	.footer,
-	.section-text,
-	.flex-table {
-		color: #cacaca;
-	}
-	
-	/* smallprint */
-	.login-body-box-smallprint > span,
-	.class-alerts ul li,
-	.dropdown-menu-wrapper .dropdown-title,
-	.export-menu a.disabled {
-		color: #7e7e7e;
-	}
-	
-	/* text - logo */
-	.logo,
-	.logo-text,
-	.logo-link {
-		color: #A9ABB0;
-	}
-	
-	
-	/*** backgrounds ***/
-	/* base */
-	html,
-	body {
-		background: #121212 !important;
-	}
-
-	/* material ui layer */
-	#page-wrapper,
-	.login-body-box,
-	.past-schoolyear .class-info,
-	input[type="text"],
-	input[type="password"],
-	.class-menu-vertical .show li,
-	.section-text {
-		background: var(--surface-color) !important;
-	}
-	
-	/* layers that can't be transparent */
-	.dropdown-content,
-	.dropdown-menu-header {
-		background: #262626;
-	}
-	
-	/* accent background */
-	.content-menu,
-	.flex-table.header.first,
-	.dropdown-title {
-		background: var(--accent-color);
-	}
-	
-	/* transparent */
-	.content-menu div,
-	.flex-table.header,
-	.dropdown-menu-wrapper ul li a {
-		background: none;
-	}
-	
-	
-	/*** borders and shadows ***/
-	/* border removals */
-	input[type="text"],
-	input[type="password"],
-	.section-text {
-		border: none;
-	}
-	
-	/* border recolor */
-	.class,
-	.class-menu,
-	.class-menu-vertical .class-info .class-alerts,
-	.class-menu ul li,
-	.class-menu-vertical .class-menu li:last-of-type,
-	.list li,
-	.flex-table,
-	.flex-row,
-	.content-menu div,
-	.dropdown-menu-wrapper .dropdown-title,
-	.dropdown-menu-wrapper ul li a,
-	.dropdown-menu-header li {
+	/* text-colored border (separators) in subject list */
+	.list li {
 		border-color: var(--surface-color) !important;
+		
+		span:first-of-type {
+			border-color: currentcolor;
+		}
 	}
 	
-	/* border recolor (lighter) */
-	.content-menu {
-		--surface-color: #ffffff21;
+	/* table restyle */
+	.flex-table {
+		border-color: var(--surface-color) !important;
+		
+		&.header {
+			background: none;
+			
+			&.first {
+				background: var(--accent-color);
+			}
+		}
 	}
 	
-	/* text-colored border (separators) */
-	.list li span:first-of-type {
-		border-color: currentcolor;
+	.flex-row {
+		border-color: var(--surface-color);
+		
+		/* adding rounded corners to the bottom of tables */
+		&.row:last-child {
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
 	}
 	
-	/* shadow removals */
-	#page-wrapper,
-	.login-body-box,
-	.class-menu-vertical .class-info,
-	.content-menu,
-	.dropdown-content,
-	#class-administration-menu .selected {
-		box-shadow: unset;
-	}
 	
-	/* border replacements for elements with shadows (shadows were barely visible so I had to do that) */
-	#class-administration-menu,
-	.content-wrapper,
-	.dropdown-menu-header {
-		box-shadow: unset;
-		border: 1px solid var(--surface-color)
+	/* dropdown menus */
+	.dropdown-menu-wrapper {
+		ul {
+			box-shadow: unset;
+			
+			li a {
+				background: none;
+				border-color: var(--surface-color);
+			}
+		}
+		
+		.dropdown-content {
+			background: var(--surface-color-floating);
+			border: 1px solid var(--surface-color);
+			border-top: none;
+			border-bottom: none;
+			/* because box-sizing is content-box, the dropdown-content is the right width, but shifted 1px to the right */
+			transform: translatex(-1px);
+			
+			.selected {
+				background: var(--accent-color-transparent);
+				font-weight: bold;
+			}
+		}
 	}
 }
