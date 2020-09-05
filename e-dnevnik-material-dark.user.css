@@ -2,7 +2,7 @@
 @name         e-Dnevnik Material Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.1.0
+@version      1.1.1
 @description  Material UI tamna tema za e-Dnevnik (A Material dark theme for e-Dnevnik)
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -29,7 +29,7 @@
 	
 	html,
 	body {
-		min-height: 100%;
+		min-height: 100vh;
 		background: var(--material-root-surface);
 	}
 	
@@ -69,12 +69,13 @@
 	#page-wrapper {
 		max-height: unset;
 		min-height: unset;
+		flex-grow: 1;
 	}
 	
 	/* material ui layers (should probably use hard-coded values as it is suggested in the guidelines) */
 	#page-wrapper,
 	.login-body-box,
-	.past-schoolyear .class-info {
+	.class-menu-vertical .class-info {
 		background: var(--surface-color) !important;
 	}
 	
@@ -147,6 +148,7 @@
 	
 	/* classes list horizontal scrollbar */
 	.classes {
+		flex-grow: 1;
 		padding-left: 0; /* having that padding there is just stupid so I removed it */
 		/* styling it using the upcoming standard (firefox only atm) */
 		scrollbar-width: thin;
