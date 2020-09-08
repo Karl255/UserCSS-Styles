@@ -2,7 +2,7 @@
 @name         e-Dnevnik Material Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.1.1
+@version      1.1.2
 @description  Material UI tamna tema za e-Dnevnik (A Material dark theme for e-Dnevnik)
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -166,9 +166,14 @@
 		&::-webkit-scrollbar-thumb {
 			background: var(--surface-color-light);
 		}
+		
+		/* the crappy arrow buttons are replaced with a scrollbar */
+		.list-arrow {
+			display: none;
+		}
 	}
 	
-	.class-menu-vertical {
+	.student-list .class-menu-vertical {
 		.class,
 		.class-info {
 			box-shadow: unset;
@@ -193,8 +198,9 @@
 			}
 		}
 		
-		.show li {
-			background: var(--surface-color)
+		.show li.overall-grade {
+			background: var(--surface-color);
+			color: var(--text-normal);
 		}
 	}
 	
@@ -231,7 +237,7 @@
 	}
 	
 	
-	/* dropdown menus */
+	/* dropdown menu in the content */
 	.dropdown-menu-wrapper {
 		ul {
 			box-shadow: unset;
@@ -253,6 +259,17 @@
 			.selected {
 				background: var(--accent-color-transparent);
 				font-weight: bold;
+			}
+		}
+	}
+	
+	/* dropdown menu in the top right (home page, log out etc.) */
+	.menu-wrapper {
+		.dropdown-menu-header {
+			background: var(--surface-color-floating);
+			
+			li {
+				border-color: var(--surface-color);
 			}
 		}
 	}
