@@ -38,12 +38,13 @@
 	}
 	
 	/* adjust day texts */
-	svg.js-calendar-graph-svg > g > text.wday {
+	/* week day texts (and only them) are positioned at x = -10 */
+	svg.js-calendar-graph-svg > g > text[dx="-10"] {
 		transform: translate(0px, calc(var(--dist) * -1));
 	}
 	
 	/* show and reposition sunday text */
-	svg.js-calendar-graph-svg > g > text.wday:nth-last-child(7) {
+	svg.js-calendar-graph-svg > g > text[dx="-10"]:nth-last-child(7) {
 		transform: translate(0px, calc(var(--dist) * 6));
 		display: inline !important;
 	}
