@@ -14,6 +14,9 @@ Short descriptions of each of my styles:
 ## github-monday
 A UserCSS style to fix the calendar's first day of week on GitHub user profiles. This is achived by moving the squares into the positions where they should be.
 
+## your-code-font
+Enforce your favorite monospace (I hope) code font across the web. Uses the monospace font you set in your browser settings.
+
 ## e-Dnevnik Material Dark
 Material UI tamna tema za [e-Dnevnik](https://ocjene.skole.hr).
 

@@ -1,0 +1,28 @@
+/* ==UserStyle==
+@name         your-code-font
+@author       Karl_255
+@namespace    github.com/Karl255
+@version      1.0.0
+@description  Enforce your favorite monospace (I hope) code font across the web.
+@homepageURL  https://github.com/Karl255/UserCSS-Styles
+@supportURL   https://github.com/Karl255/UserCSS-Styles/issues
+@updateURL    https://raw.githubusercontent.com/Karl255/UserCSS-Styles/master/your-code-font/your-code-font.user.css
+@license      unlicense
+@preprocessor default
+==/UserStyle== */
+
+/* these can appear on any website */
+pre,
+code,
+.hljs,
+.CodeMirror,
+.sourceblock > * > * {
+	font-family: monospace !important;
+}
+
+@-moz-document domain("github.com") {
+	.blob-code-inner,
+	.blob-num {
+		font-family: monospace !important;
+	}
+}
