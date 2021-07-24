@@ -6,11 +6,13 @@ First you'll need one of the following extensions:
 - Stylus ([Firefox](https://addons.mozilla.org/firefox/addon/styl-us/), [Chrome or Edge](https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne), [Opera](https://addons.opera.com/en-gb/extensions/details/stylus/))
 - xStyle ([Firefox](https://addons.mozilla.org/firefox/addon/xstyle/) or [Chrome](https://chrome.google.com/webstore/detail/xstyle/hncgkmhphmncjohllpoleelnibpmccpj))
 
-Next, open the `.user.css` file of the style you want to install (using github-monday as an example) in raw mode and an installation window should automatically pop up (if not, simply copy paste the UserCSS code into a new Stylus UserCSS style).
+### From UserStyles.world
+Visit my profile over on [UserStyles.world](https://userstyles.world/user/karl255), find the style you want and click the Install button.
+
+### Directly from GitHub
+Open the `.user.css` file of the style you want to install in raw mode (direct links to this provided below) and an installation dialog should automatically appear. If not, simply copy paste the UserCSS code into a new Stylus UserCSS style. The metadata will link back to this repo and auto-updates will work.
 
 # Styles
-Short descriptions of each of my styles:
-
 ## [github-monday](https://raw.githubusercontent.com/Karl255/UserCSS-Styles/master/github-monday/github-monday.user.css)
 A UserCSS style to fix the calendar's first day of week on GitHub user profiles. This is achived by moving the squares into the positions where they should be.
 
