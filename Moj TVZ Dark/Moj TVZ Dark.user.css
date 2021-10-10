@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.0
+@version      1.0.1
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -27,8 +27,8 @@
 	:root {
 		color: whitesmoke;
 
-		--bg-200: @bg-color-base; // panels bg
-		--bg-300: lighten(@bg-color-base, 5%); // hovered elements, input elements
+		--bg-200: @bg-color-base;               // panels bg
+		--bg-300: lighten(@bg-color-base, 5%);  // hovered elements, input elements
 		--bg-400: lighten(@bg-color-base, 10%); // navbar bg
 		--bg-500: lighten(@bg-color-base, 17%); // nothing yet
 		--border-200: @border-color-base;
@@ -43,14 +43,20 @@
 			background: url(https://moj.tvz.hr/slika/back.png), white;
 			background-blend-mode: exclusion;
 
-			display: grid; // stack everything in the same area
+			display: grid;
+			
+			// stack everything in the same area
 			> * {
 				grid-area: 1 / 1;
-			} // for images that might be added (tested with some of the commented HTML code)
+			}
+			
+			// for images that might be added (tested with some of the commented HTML code)
 			> :not(.container-fluid) img {
 				object-fit: contain;
 				max-height: 100vh
-			} // for centering of login div
+			}
+			
+			// for centering of login div
 			> .container-fluid > .row {
 				display: grid;
 				place-content: center;
@@ -66,7 +72,9 @@
 					width: 100%;
 				}
 			}
-		} // useless hr that breaks page height
+		}
+	
+		// useless hr that breaks page height
 		> hr {
 			display: none;
 		}
@@ -74,9 +82,12 @@
 
 	/* rest */
 	body[background] {
-		color: inherit;
 		background-color: #ffffff;
 		background-blend-mode: exclusion; // XOR grid pattern with white, eg. invert grid pattern colors
+	}
+	
+	body {
+		color: inherit;
 	}
 
 	/* navbar */
@@ -89,10 +100,14 @@
 		border-color: var(--border-400);
 
 		box-shadow: none;
-	} // mobile only navbar toggle icon
+	}
+	
+	// mobile only navbar toggle icon
 	.navbar-header {
 		display: none;
-	} // to properly center the right part of the navbar
+	}
+	
+	// to properly center the right part of the navbar
 	.navbar-right {
 		margin-left: auto; // push self to the right
 		display: flex;
@@ -106,7 +121,9 @@
 
 	.navbar-form {
 		margin: 0;
-	} // navbar links
+	}
+	
+	// navbar links
 	.navbar-nav a {
 		color: inherit !important;
 
@@ -117,7 +134,9 @@
 	.navbar-collapse > .navbar-nav > li > a {
 		padding-top: 8px;
 		padding-bottom: 8px;
-	} // navbar opened dropdowns
+	}
+	
+	// navbar opened dropdowns
 	.navbar-default .navbar-nav > .open > a {
 		&,
 		&:hover,
@@ -174,7 +193,9 @@
 
 	.panel-danger .panel-heading {
 		background: @danger-color;
-	} // alert
+	}
+	
+	// alert
 	.alert {
 		color: inherit !important;
 		border: none !important;
@@ -199,10 +220,14 @@
 
 	.alert-danger {
 		background: @danger-color;
-	} // jumbotron
+	}
+	
+	// jumbotron
 	.jumbotron {
 		background-color: var(--bg-200);
-	} // list group
+	}
+	
+	// list group
 	.list-group {
 		box-shadow: none;
 	}
@@ -235,7 +260,9 @@
 	.list-group-item-danger {
 		background-color: @danger-color;
 		border: none;
-	} // modal
+	}
+	
+	// modal
 	.modal-content {
 		background: var(--bg-400);
 		border-color: var(--border-400);
@@ -354,7 +381,9 @@
 
 	.btn-disabled {
 		pointer-events: none;
-	} // pagination buttons
+	}
+	
+	// pagination buttons
 	.pagination > .paginate_button > a {
 		background-color: var(--bg-400);
 		border-color: var(--border-400);
@@ -364,14 +393,18 @@
 			background-color: var(--bg-300);
 			border-color: var(--border-300);
 		}
-	} // regular select input
+	}
+	
+	// regular select input
 	select {
 		color: inherit;
 		background: var(--bg-400);
 		border: 1px solid var(--border-400);
 		padding: 8px 20px;
 		border-radius: 4px;
-	} // select input "select2"
+	}
+	
+	// select input "select2"
 	.select2-container {
 		.select2-choice {
 			color: inherit;
@@ -392,7 +425,9 @@
 				}
 			}
 		}
-	} // tabs
+	}
+	
+	// tabs
 	.nav-tabs {
 		border-color: var(--border-300);
 	}
@@ -439,7 +474,9 @@
 		.select2-selection-limit {
 			background: none;
 		}
-	} // "form-control"
+	}
+	
+	// "form-control"
 	.form-control {
 		color: inherit;
 		background-color: var(--bg-300);
@@ -493,7 +530,9 @@
 
 	.fc-state-disabled {
 		pointer-events: none;
-	} // table height fix
+	}
+	
+	// table height fix
 	.fc-time-grid-container {
 		height: unset !important;
 	}
@@ -517,10 +556,14 @@
 		&:focus {
 			color: desaturate(darken(@link-color, 25%), 25%);
 		}
-	} // remove height of clearfix itself
+	}
+	
+	// remove height of clearfix itself
 	.clearfix {
 		margin-bottom: -10px;
-	} // has a really nasty contrast
+	}
+	
+	// has a really nasty contrast
 	.panel-info font[color="red"] {
 		color: #950000;
 	}
