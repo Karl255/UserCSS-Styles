@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.1
+@version      1.0.2
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -22,6 +22,7 @@
 	* {
 		box-shadow: none !important;
 		text-shadow: none !important;
+		scrollbar-color: lighten(@bg-color-base, 20%) @bg-color-base;
 	}
 
 	:root {
