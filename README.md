@@ -28,3 +28,4 @@ Material UI tamna tema za [e-Dnevnik](https://ocjene.skole.hr). Kompatibilno s e
 (Material UI dark theme for [e-Dnevnik](https://ocjene.skole.hr). Compatible with e-Dnevnik Plus.)
 
 ## Moj TVZ Dark [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://raw.githubusercontent.com/Karl255/UserCSS-Styles/master/Moj%20TVZ%20Dark/Moj%20TVZ%20Dark.user.css)
+Tamna tema za moj.tvz.hr. Ako imate prijedlog ili problem, otvorite novi issue o tome (ako već ne postoji).
