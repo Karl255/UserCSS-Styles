@@ -26,3 +26,5 @@ Enforce your favorite monospace (I hope) code font across the web. Uses the mono
 Material UI tamna tema za [e-Dnevnik](https://ocjene.skole.hr). Kompatibilno s e-Dnevnik Plus.
 
 (Material UI dark theme for [e-Dnevnik](https://ocjene.skole.hr). Compatible with e-Dnevnik Plus.)
+
+## Moj TVZ Dark [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://raw.githubusercontent.com/Karl255/UserCSS-Styles/master/Moj%20TVZ%20Dark/Moj%20TVZ%20Dark.user.css)

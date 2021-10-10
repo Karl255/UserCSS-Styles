@@ -1,0 +1,527 @@
+/* ==UserStyle==
+@name         Moj TVZ Dark
+@author       Karl_255 (Karlo Bistrički)
+@namespace    github.com/Karl255
+@version      1.0.0
+@description  Tamna tema za moj.tvz.hr
+@homepageURL  https://github.com/Karl255/UserCSS-Styles
+@supportURL   https://github.com/Karl255/UserCSS-Styles/issues
+@license      MIT
+@preprocessor less
+
+@var color bg-color-base "Base (dakrest) background color" hsl(210, 10%, 10%)
+@var color info-color    "'Info' color"                    #238798
+@var color success-color "'Success' color"                 #549D36
+@var color warning-color "'Warning' color"                 #a68f1b
+@var color danger-color  "'Danger' color"                  #9A2D37
+@var color link-color    "Link color"                      #60b1f7
+==/UserStyle== */
+@-moz-document domain("moj.tvz.hr") {
+	@border-color-base: lighten(@bg-color-base, 5%);
+
+	* {
+		box-shadow: none !important;
+		text-shadow: none !important;
+	}
+
+	:root {
+		color: whitesmoke;
+
+		--bg-200: @bg-color-base; // panels bg
+		--bg-300: lighten(@bg-color-base, 5%); // hovered elements, input elements
+		--bg-400: lighten(@bg-color-base, 10%); // navbar bg
+		--bg-500: lighten(@bg-color-base, 17%); // nothing yet
+		--border-200: @border-color-base;
+		--border-300: lighten(@border-color-base, 5%);
+		--border-400: lighten(@border-color-base, 10%);
+		--border-500: lighten(@border-color-base, 17%);
+	}
+
+	/* login page only */
+	body:not([background]) {
+		> .main-section {
+			background: url(https://moj.tvz.hr/slika/back.png), white;
+			background-blend-mode: exclusion;
+
+			display: grid; // stack everything in the same area
+			> * {
+				grid-area: 1 / 1;
+			} // for images that might be added (tested with some of the commented HTML code)
+			> :not(.container-fluid) img {
+				object-fit: contain;
+				max-height: 100vh
+			} // for centering of login div
+			> .container-fluid > .row {
+				display: grid;
+				place-content: center;
+				min-height: 60vh; // set to 100vh for vertical centering
+			}
+
+			.login-image-main {
+				background-color: var(--bg-200);
+				border: 1px solid var(--border-200);
+				margin: 0;
+
+				.user-image-section > img {
+					width: 100%;
+				}
+			}
+		} // useless hr that breaks page height
+		> hr {
+			display: none;
+		}
+	}
+
+	/* rest */
+	body[background] {
+		color: inherit;
+		background-color: #ffffff;
+		background-blend-mode: exclusion; // XOR grid pattern with white, eg. invert grid pattern colors
+	}
+
+	/* navbar */
+	.navbar {
+		min-height: unset;
+	}
+
+	.navbar-default {
+		background: var(--bg-400);
+		border-color: var(--border-400);
+
+		box-shadow: none;
+	} // mobile only navbar toggle icon
+	.navbar-header {
+		display: none;
+	} // to properly center the right part of the navbar
+	.navbar-right {
+		margin-left: auto; // push self to the right
+		display: flex;
+		align-items: center;
+	}
+
+	.navbar-collapse.collapse {
+		display: flex !important;
+		align-items: center;
+	}
+
+	.navbar-form {
+		margin: 0;
+	} // navbar links
+	.navbar-nav a {
+		color: inherit !important;
+
+		text-shadow: none !important;
+		text-decoration: none;
+	}
+
+	.navbar-collapse > .navbar-nav > li > a {
+		padding-top: 8px;
+		padding-bottom: 8px;
+	} // navbar opened dropdowns
+	.navbar-default .navbar-nav > .open > a {
+		&,
+		&:hover,
+		&:focus {
+			background-color: var(--bg-300);
+		}
+	}
+
+	.dropdown-menu {
+		background-color: var(--bg-300);
+		background-clip: revert;
+		border-color: var(--border-300);
+
+		& > li > a {
+			color: inherit;
+
+			&:hover,
+			&:focus {
+				color: inherit;
+				background: var(--bg-400);
+			}
+		}
+	}
+
+	/* panels */
+	.panel {
+		background-color: var(--bg-200);
+		border-color: var(--border-200);
+		box-shadow: none;
+	}
+
+	.panel-heading {
+		color: inherit !important;
+		border-bottom: none;
+
+		margin: -1px -1px 0 -1px; // single property to replace lots of border "magic"
+	}
+
+	.panel-default .panel-heading {
+		background: var(--bg-300);
+	}
+
+	.panel-info .panel-heading {
+		background: @info-color;
+	}
+
+	.panel-success .panel-heading {
+		background: @success-color;
+	}
+
+	.panel-warning .panel-heading {
+		background: @warning-color;
+	}
+
+	.panel-danger .panel-heading {
+		background: @danger-color;
+	} // alert
+	.alert {
+		color: inherit !important;
+		border: none !important;
+
+		box-shadow: none;
+		text-shadow: none;
+
+		margin-bottom: 8px;
+	}
+
+	.alert-info {
+		background: @info-color;
+	}
+
+	.alert-success {
+		background: @success-color;
+	}
+
+	.alert-warning {
+		background: @warning-color;
+	}
+
+	.alert-danger {
+		background: @danger-color;
+	} // jumbotron
+	.jumbotron {
+		background-color: var(--bg-200);
+	} // list group
+	.list-group {
+		box-shadow: none;
+	}
+
+	.list-group-item {
+		color: inherit;
+		background-color: var(--bg-200);
+		border-color: var(--border-200);
+
+		h5 {
+			margin: 0;
+		}
+	}
+
+	.list-group-item-info {
+		background-color: @info-color;
+		border: none;
+	}
+
+	.list-group-item-success {
+		background-color: @success-color;
+		border: none;
+	}
+
+	.list-group-item-warning {
+		background-color: @warning-color;
+		border: none;
+	}
+
+	.list-group-item-danger {
+		background-color: @danger-color;
+		border: none;
+	} // modal
+	.modal-content {
+		background: var(--bg-400);
+		border-color: var(--border-400);
+	}
+
+	.modal-header {
+		border-color: var(--border-400);
+	}
+
+	.close {
+		color: #ccc;
+		text-shadow: none;
+		opacity: 1;
+
+		&:hover {
+			color: #ccc;
+			opacity: .5;
+		}
+	}
+
+	/* inputs and buttons */
+	input[type="submit"]:not(.btn) {
+		color: inherit;
+		background-color: var(--bg-400);
+		border: 1px solid var(--border-400);
+
+		border-radius: 4px;
+		padding: 4px 20px;
+	}
+
+	button {
+		color: inherit;
+		background-color: var(--bg-400);
+		border: 1px solid var(--border-400);
+
+		border-radius: 4px;
+		padding: 4px 20px;
+
+		&:hover,
+		&:focus {
+			background-color: var(--bg-300);
+			border: 1px solid var(--border-300);
+		}
+	}
+
+	.btn {
+		color: inherit !important;
+		border: none;
+
+		box-shadow: none !important;
+		text-shadow: none !important;
+		text-decoration: none;
+
+		.navbar-nav & {
+			background-color: var(--bg-400);
+			border: 1px solid var(--border-400);
+
+			&:hover,
+			&:focus {
+				background: var(--bg-300) !important;
+				border-color: var(--border-300) !important;
+			}
+		}
+	}
+
+	.btn-default {
+		background: var(--bg-400);
+		border: 1px solid var(--border-400) !important;
+
+		&:hover,
+		&:focus {
+			background: var(--bg-300);
+			border-color: var(--border-300) !important;
+		}
+	}
+
+	.btn.btn-info {
+		background: @info-color;
+
+		&:hover,
+		&:focus {
+			background: darken(@info-color, 8%);
+			border: none;
+		}
+	}
+
+	.btn.btn-success {
+		background: @success-color;
+
+		&:hover,
+		&:focus {
+			background: darken(@success-color, 8%);
+			border: none;
+		}
+	}
+
+	.btn.btn-warning {
+		background: @warning-color;
+
+		&:hover,
+		&:focus {
+			background: darken(@warning-color, 8%);
+			border: none;
+		}
+	}
+
+	.btn.btn-danger {
+		background: @danger-color;
+
+		&:hover,
+		&:focus {
+			background: darken(@danger-color, 8%);
+			border: none;
+		}
+	}
+
+	.btn-disabled {
+		pointer-events: none;
+	} // pagination buttons
+	.pagination > .paginate_button > a {
+		background-color: var(--bg-400);
+		border-color: var(--border-400);
+
+		&:hover,
+		&:focus {
+			background-color: var(--bg-300);
+			border-color: var(--border-300);
+		}
+	} // regular select input
+	select {
+		color: inherit;
+		background: var(--bg-400);
+		border: 1px solid var(--border-400);
+		padding: 8px 20px;
+		border-radius: 4px;
+	} // select input "select2"
+	.select2-container {
+		.select2-choice {
+			color: inherit;
+			background: var(--bg-300);
+			border-color: var(--border-300);
+
+			box-shadow: none !important;
+
+			height: unset;
+			padding: 4px 10px !important;
+
+			.select2-arrow {
+				background: var(--bg-300);
+				border-color: var(--border-300);
+
+				& > b {
+					background-position-y: 5px;
+				}
+			}
+		}
+	} // tabs
+	.nav-tabs {
+		border-color: var(--border-300);
+	}
+
+	.nav-tabs.nav-justified > li > a {
+		color: inherit;
+		background-color: var(--bg-400);
+		border-color: var(--border-400);
+
+		text-decoration: none;
+
+		&:hover,
+		&:focus {
+			color: inherit;
+			background-color: var(--bg-300);
+			border-color: var(--border-300);
+		}
+	}
+
+	.nav-tabs > li.active > a,
+	.nav-tabs.nav-justified > .active > a {
+		color: inherit;
+		background-color: var(--bg-300);
+		border-color: var(--border-300);
+
+		text-decoration: none;
+		pointer-events: none;
+	}
+
+	.select2-drop {
+		color: inherit;
+		background-color: var(--bg-300);
+		border-color: var(--border-300);
+
+		input {
+			background: url("select2.png"), var(--bg-200);
+			border-color: var(--border-200);
+		}
+	}
+
+	.select2-results {
+		.select2-no-results,
+		.select2-searching,
+		.select2-selection-limit {
+			background: none;
+		}
+	} // "form-control"
+	.form-control {
+		color: inherit;
+		background-color: var(--bg-300);
+		border-color: var(--border-300);
+	}
+
+	/* tables */
+	// calendar/schedule table
+	.table-hover > tbody > tr:hover {
+		& > th,
+		& > td {
+			background-color: var(--bg-300);
+		}
+	}
+
+	.fc {
+		background-color: var(--bg-200);
+	}
+
+	.fc-unthemed {
+		thead,
+		tbody,
+		th,
+		td,
+		hr,
+		.fc-row,
+		.fc-popover {
+			border-color: var(--border-300);
+		}
+
+		hr {
+			background: var(--border-300);
+		}
+	}
+
+	.fc td.fc-today {
+		background-color: var(--bg-300);
+	}
+
+	.fc-button {
+		color: inherit;
+		background: var(--bg-400);
+		border-color: var(--border-400);
+
+		&:hover,
+		&:focus {
+			background: var(--bg-300);
+			border-color: var(--border-300);
+		}
+	}
+
+	.fc-state-disabled {
+		pointer-events: none;
+	} // table height fix
+	.fc-time-grid-container {
+		height: unset !important;
+	}
+
+	/* typography/rest */
+	p,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		color: inherit;
+	}
+
+	a {
+		color: @link-color;
+		text-decoration: underline;
+
+		&:hover,
+		&:focus {
+			color: desaturate(darken(@link-color, 25%), 25%);
+		}
+	} // remove height of clearfix itself
+	.clearfix {
+		margin-bottom: -10px;
+	} // has a really nasty contrast
+	.panel-info font[color="red"] {
+		color: #950000;
+	}
+}
