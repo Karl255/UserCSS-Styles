@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.3
+@version      1.0.4
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -311,13 +311,12 @@
 
 	.btn {
 		color: inherit !important;
-		border: none;
 
 		box-shadow: none !important;
 		text-shadow: none !important;
 		text-decoration: none;
 
-		.navbar-nav & {
+		.navbar-nav &:not(.modal &) {
 			background-color: var(--bg-400);
 			border: 1px solid var(--border-400);
 
@@ -340,43 +339,44 @@
 		}
 	}
 
+	// TODO: use mixins for these
 	.btn.btn-info {
 		background: @info-color;
+		border-color: darken(@info-color, 8%);
 
 		&:hover,
 		&:focus {
 			background: darken(@info-color, 8%);
-			border: none;
 		}
 	}
 
 	.btn.btn-success {
 		background: @success-color;
+		border-color: darken(@success-color, 8%);
 
 		&:hover,
 		&:focus {
 			background: darken(@success-color, 8%);
-			border: none;
 		}
 	}
 
 	.btn.btn-warning {
 		background: @warning-color;
+		border-color: darken(@warning-color, 8%);
 
 		&:hover,
 		&:focus {
 			background: darken(@warning-color, 8%);
-			border: none;
 		}
 	}
 
 	.btn.btn-danger {
 		background: @danger-color;
+		border-color: darken(@danger-color, 8%);
 
 		&:hover,
 		&:focus {
 			background: darken(@danger-color, 8%);
-			border: none;
 		}
 	}
 
@@ -491,12 +491,21 @@
 	}
 
 	/* tables */
+	
+	.table > tbody > tr > td {
+		border-color: var(--border-300);
+	}
+	
 	// calendar/schedule table
 	.table-hover > tbody > tr:hover {
 		& > th,
 		& > td {
 			background-color: var(--bg-300);
 		}
+	}
+	
+	.table-striped > tbody tr:nth-child(2n+1) > td {
+		background-color: var(--bg-300);
 	}
 
 	.fc {
