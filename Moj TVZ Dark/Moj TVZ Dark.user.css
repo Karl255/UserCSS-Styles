@@ -455,7 +455,13 @@
 		border-color: var(--border-300);
 
 		text-decoration: none;
-		pointer-events: none;
+		
+		&:hover,
+		&:focus {
+			color: inherit;
+			background-color: var(--bg-300);
+			border-color: var(--border-300);
+		}
 	}
 
 	.select2-drop {
