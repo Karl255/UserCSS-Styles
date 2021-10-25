@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.4
+@version      1.0.5
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -203,8 +203,6 @@
 
 		box-shadow: none;
 		text-shadow: none;
-
-		margin-bottom: 8px;
 	}
 
 	.alert-info {
@@ -492,6 +490,7 @@
 
 	/* tables */
 	
+	.table > thead > tr > th,
 	.table > tbody > tr > td {
 		border-color: var(--border-300);
 	}
@@ -506,6 +505,10 @@
 	
 	.table-striped > tbody tr:nth-child(2n+1) > td {
 		background-color: var(--bg-300);
+	}
+	
+	.table-bordered {
+		border-color: var(--border-300);
 	}
 
 	.fc {
