@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.5
+@version      1.0.6
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -162,9 +162,43 @@
 		}
 	}
 
-	/* panels */
+	/* panels, alerts and such */
+	
+	// mixins
+	#bootstrap-colors-bg() {
+		&-info    { background: @info-color; }
+		&-success { background: @success-color; }
+		&-warning { background: @warning-color; }
+		&-danger  { background: @danger-color; }
+	}
+	
+	#bootstrap-colors-panel-heading() {
+		// NOTE: bootstrap has "priamry panels", but they're not used on moj.tvz.hr
+		&-default .panel-heading { background: var(--bg-300); }
+		&-info    .panel-heading { background: @info-color; }
+		&-success .panel-heading { background: @success-color; }
+		&-warning .panel-heading { background: @warning-color; }
+		&-danger  .panel-heading { background: @danger-color; }
+	}
+	
+	#bootstrap-colors-lgi() {
+		&-info    { background-color: @info-color; }
+		&-success { background-color: @success-color; }
+		&-warning { background-color: @warning-color; }
+		&-danger  { background-color: @danger-color; }
+		
+		&-info,
+		&-success,
+		&-warning,
+		&-danger {
+			border: none;
+		}
+	}
+	
+	// panels
 	.panel {
 		background-color: var(--bg-200);
+		#bootstrap-colors-panel-heading();
 		border-color: var(--border-200);
 		box-shadow: none;
 	}
@@ -175,50 +209,15 @@
 
 		margin: -1px -1px 0 -1px; // single property to replace lots of border "magic"
 	}
-
-	.panel-default .panel-heading {
-		background: var(--bg-300);
-	}
-
-	.panel-info .panel-heading {
-		background: @info-color;
-	}
-
-	.panel-success .panel-heading {
-		background: @success-color;
-	}
-
-	.panel-warning .panel-heading {
-		background: @warning-color;
-	}
-
-	.panel-danger .panel-heading {
-		background: @danger-color;
-	}
 	
 	// alert
 	.alert {
 		color: inherit !important;
+		#bootstrap-colors-bg();
 		border: none !important;
 
 		box-shadow: none;
 		text-shadow: none;
-	}
-
-	.alert-info {
-		background: @info-color;
-	}
-
-	.alert-success {
-		background: @success-color;
-	}
-
-	.alert-warning {
-		background: @warning-color;
-	}
-
-	.alert-danger {
-		background: @danger-color;
 	}
 	
 	// jumbotron
@@ -234,31 +233,12 @@
 	.list-group-item {
 		color: inherit;
 		background-color: var(--bg-200);
+		#bootstrap-colors-lgi();
 		border-color: var(--border-200);
 
 		h5 {
 			margin: 0;
 		}
-	}
-
-	.list-group-item-info {
-		background-color: @info-color;
-		border: none;
-	}
-
-	.list-group-item-success {
-		background-color: @success-color;
-		border: none;
-	}
-
-	.list-group-item-warning {
-		background-color: @warning-color;
-		border: none;
-	}
-
-	.list-group-item-danger {
-		background-color: @danger-color;
-		border: none;
 	}
 	
 	// modal
@@ -306,76 +286,64 @@
 			border: 1px solid var(--border-300);
 		}
 	}
-
+	
 	.btn {
 		color: inherit !important;
+		background: var(--btn-color-primary);
+		border-color: var(--btn-color-secondary);
 
 		box-shadow: none !important;
 		text-shadow: none !important;
 		text-decoration: none;
 
+		&:hover,
+		&:focus {
+			background: var(--btn-color-secondary);
+			border-color: var(--btn-color-ternary);
+		}
+		
 		.navbar-nav &:not(.modal &) {
 			background-color: var(--bg-400);
 			border: 1px solid var(--border-400);
 
 			&:hover,
 			&:focus {
-				background: var(--bg-300) !important;
-				border-color: var(--border-300) !important;
+				background-color: var(--bg-300);
+				border-color: var(--border-300);
 			}
 		}
 	}
 
-	.btn-default {
-		background: var(--bg-400);
-		border: 1px solid var(--border-400) !important;
-
-		&:hover,
-		&:focus {
-			background: var(--bg-300);
-			border-color: var(--border-300) !important;
-		}
+	.btn.btn-default {
+		--btn-color-primary: var(--bg-400);
+		--btn-color-secondary: var(--border-400);
+		--btn-color-ternary: var(--border-300);
 	}
 
-	// TODO: use mixins for these
-	.btn.btn-info {
-		background: @info-color;
-		border-color: darken(@info-color, 8%);
-
-		&:hover,
-		&:focus {
-			background: darken(@info-color, 8%);
-		}
+	@darken-amount: 7%;
+	
+	.btn-info {
+		--btn-color-primary: @info-color;
+		--btn-color-secondary: darken(@info-color, @darken-amount);
+		--btn-color-ternary: darken(@info-color, 2 * @darken-amount);
 	}
 
 	.btn.btn-success {
-		background: @success-color;
-		border-color: darken(@success-color, 8%);
-
-		&:hover,
-		&:focus {
-			background: darken(@success-color, 8%);
-		}
+		--btn-color-primary: @success-color;
+		--btn-color-secondary: darken(@success-color, @darken-amount);
+		--btn-color-ternary: darken(@success-color, 2 * @darken-amount);
 	}
 
 	.btn.btn-warning {
-		background: @warning-color;
-		border-color: darken(@warning-color, 8%);
-
-		&:hover,
-		&:focus {
-			background: darken(@warning-color, 8%);
-		}
+		--btn-color-primary: @warning-color;
+		--btn-color-secondary: darken(@warning-color, @darken-amount);
+		--btn-color-ternary: darken(@warning-color, 2 * @darken-amount);
 	}
 
 	.btn.btn-danger {
-		background: @danger-color;
-		border-color: darken(@danger-color, 8%);
-
-		&:hover,
-		&:focus {
-			background: darken(@danger-color, 8%);
-		}
+		--btn-color-primary: @danger-color;
+		--btn-color-secondary: darken(@danger-color, @darken-amount);
+		--btn-color-ternary: darken(@danger-color, 2 * @darken-amount);
 	}
 
 	.btn-disabled {
