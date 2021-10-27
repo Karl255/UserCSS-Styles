@@ -2,23 +2,23 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.0.6
+@version      1.1.0
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
 @license      MIT
 @preprocessor less
 
-@var color bg-color-base "Base (dakrest) background color" hsl(210, 10%, 10%)
-@var color info-color    "'Info' color"                    #238798
-@var color success-color "'Success' color"                 #549D36
-@var color warning-color "'Warning' color"                 #a68f1b
-@var color danger-color  "'Danger' color"                  #9A2D37
-@var color link-color    "Link color"                      #60b1f7
+@var color bg-color-base     "Base (dakrest) background color" hsl(210, 10%, 10%)
+@var color info-color        "'Info' color"                    #0b3c85
+@var color success-color     "'Success' color"                 #117A11
+@var color warning-color     "'Warning' color"                 #8F6F0E
+@var color danger-color      "'Danger' color"                  #900F0F
+@var color text-color        "Text color"                      whitesmoke
+@var color header-text-color "Colored header text color"       white
+@var color link-color        "Link color"                      #60b1f7
 ==/UserStyle== */
 @-moz-document domain("moj.tvz.hr") {
-	@border-color-base: lighten(@bg-color-base, 5%);
-
 	* {
 		box-shadow: none !important;
 		text-shadow: none !important;
@@ -26,12 +26,13 @@
 	}
 
 	:root {
-		color: whitesmoke;
+		color: @text-color;
 
 		--bg-200: @bg-color-base;               // panels bg
 		--bg-300: lighten(@bg-color-base, 5%);  // hovered elements, input elements
 		--bg-400: lighten(@bg-color-base, 10%); // navbar bg
 		--bg-500: lighten(@bg-color-base, 17%); // nothing yet
+		@border-color-base: lighten(@bg-color-base, 5%);
 		--border-200: @border-color-base;
 		--border-300: lighten(@border-color-base, 5%);
 		--border-400: lighten(@border-color-base, 10%);
@@ -174,7 +175,7 @@
 	
 	#bootstrap-colors-panel-heading() {
 		// NOTE: bootstrap has "priamry panels", but they're not used on moj.tvz.hr
-		&-default .panel-heading { background: var(--bg-300); }
+		&-default .panel-heading { background: var(--bg-300); color: inherit !important; }
 		&-info    .panel-heading { background: @info-color; }
 		&-success .panel-heading { background: @success-color; }
 		&-warning .panel-heading { background: @warning-color; }
@@ -191,6 +192,7 @@
 		&-success,
 		&-warning,
 		&-danger {
+			color: @header-text-color;
 			border: none;
 		}
 	}
@@ -204,7 +206,7 @@
 	}
 
 	.panel-heading {
-		color: inherit !important;
+		color: @header-text-color !important;
 		border-bottom: none;
 
 		margin: -1px -1px 0 -1px; // single property to replace lots of border "magic"
@@ -212,12 +214,18 @@
 	
 	// alert
 	.alert {
-		color: inherit !important;
+		color: @header-text-color;
 		#bootstrap-colors-bg();
 		border: none !important;
 
 		box-shadow: none;
 		text-shadow: none;
+		
+		// reset color for elements with a dark background
+		select,
+		input[type="submit"]{
+			color: @text-color !important;
+		}
 	}
 	
 	// jumbotron
@@ -263,6 +271,14 @@
 	}
 
 	/* inputs and buttons */
+	input[type="text"] {
+		background-color: var(--bg-400);
+		border: 1px solid var(--border-400);
+		
+		border-radius: 4px;
+		padding: 4px 10px;
+	}
+	
 	input[type="submit"]:not(.btn) {
 		color: inherit;
 		background-color: var(--bg-400);
@@ -270,6 +286,12 @@
 
 		border-radius: 4px;
 		padding: 4px 20px;
+		
+		&:hover,
+		&:focus {
+			background-color: var(--bg-300);
+			border: 1px solid var(--border-300);
+		}
 	}
 
 	button {
@@ -288,7 +310,7 @@
 	}
 	
 	.btn {
-		color: inherit !important;
+		color: inherit;
 		background: var(--btn-color-primary);
 		border-color: var(--btn-color-secondary);
 
@@ -298,6 +320,7 @@
 
 		&:hover,
 		&:focus {
+			color: inherit;
 			background: var(--btn-color-secondary);
 			border-color: var(--btn-color-ternary);
 		}
@@ -315,6 +338,7 @@
 	}
 
 	.btn.btn-default {
+		color: inherit;
 		--btn-color-primary: var(--bg-400);
 		--btn-color-secondary: var(--border-400);
 		--btn-color-ternary: var(--border-300);
@@ -545,6 +569,11 @@
 		}
 	}
 	
+	// prevent images extending past its parent, causing it to go under text (white text on a white picture = not good)
+	img {
+		max-width: 100%;
+	}
+	
 	// remove height of clearfix itself
 	.clearfix {
 		margin-bottom: -10px;
@@ -552,6 +581,6 @@
 	
 	// has a really nasty contrast
 	.panel-info font[color="red"] {
-		color: #950000;
+		color: #fb7d22;
 	}
 }
