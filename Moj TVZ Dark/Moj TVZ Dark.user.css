@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.2.0
+@version      1.2.1
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -31,7 +31,7 @@
 
 	:root {
 		color: @text-color;
-
+		
 		@border-color-base: lighten(@bg-color-base, @bg-l-increment);
 
 		--bg-200: @bg-color-base;                               // bottom/base panels
@@ -49,18 +49,18 @@
 			background-blend-mode: exclusion;
 
 			display: grid;
-
+			
 			// stack everything in the same area
 			> * {
 				grid-area: 1 / 1;
 			}
-
+			
 			// for images that might be added (tested with some of the commented HTML code)
 			> :not(.container-fluid) img {
 				object-fit: contain;
 				max-height: 100vh
 			}
-
+			
 			// for centering of login div
 			> .container-fluid > .row {
 				display: grid;
@@ -78,7 +78,7 @@
 				}
 			}
 		}
-
+	
 		// useless hr that breaks page height
 		> hr {
 			display: none;
@@ -90,11 +90,11 @@
 		background-color: #ffffff;
 		background-blend-mode: exclusion; // XOR grid pattern with white, eg. invert grid pattern colors
 	}
-
+	
 	body {
 		color: inherit;
 	}
-
+	
 	/* navbar */
 	.navbar {
 		min-height: unset;
@@ -106,12 +106,12 @@
 
 		box-shadow: none;
 	}
-
+	
 	// mobile only navbar toggle icon
 	.navbar-header {
 		display: none;
 	}
-
+	
 	// to properly center the right part of the navbar
 	.navbar-right {
 		margin-left: auto; // push self to the right
@@ -127,7 +127,7 @@
 	.navbar-form {
 		margin: 0;
 	}
-
+	
 	// navbar links
 	.navbar-nav a {
 		color: inherit !important;
@@ -140,7 +140,7 @@
 		padding-top: 8px;
 		padding-bottom: 8px;
 	}
-
+	
 	// navbar opened dropdowns
 	.navbar-default .navbar-nav > .open > a {
 		&,
@@ -167,7 +167,7 @@
 	}
 
 	/* panels, alerts and such */
-
+	
 	// mixins
 	#bootstrap-colors-bg() {
 		&-info    { background: @info-color; }
@@ -175,7 +175,7 @@
 		&-warning { background: @warning-color; }
 		&-danger  { background: @danger-color; }
 	}
-
+	
 	#bootstrap-colors-panel-heading() {
 		// NOTE: bootstrap has "priamry panels", but they're not used on moj.tvz.hr
 		&-default .panel-heading { background: var(--bg-300); color: inherit !important; }
@@ -184,13 +184,13 @@
 		&-warning .panel-heading { background: @warning-color; }
 		&-danger  .panel-heading { background: @danger-color; }
 	}
-
+	
 	#bootstrap-colors-lgi() {
 		&-info    { background-color: @info-color; }
 		&-success { background-color: @success-color; }
 		&-warning { background-color: @warning-color; }
 		&-danger  { background-color: @danger-color; }
-
+		
 		&-info,
 		&-success,
 		&-warning,
@@ -199,7 +199,7 @@
 			border: none;
 		}
 	}
-
+	
 	// panels
 	.panel {
 		background-color: var(--bg-200);
@@ -214,7 +214,7 @@
 
 		margin: -1px -1px 0 -1px; // single property to replace lots of border "magic"
 	}
-
+	
 	// alert
 	.alert {
 		color: @hc-text-color;
@@ -223,19 +223,19 @@
 
 		box-shadow: none;
 		text-shadow: none;
-
+		
 		// reset color for elements with a dark background
 		select,
 		input[type="submit"]{
 			color: @text-color !important;
 		}
 	}
-
+	
 	// jumbotron
 	.jumbotron {
 		background-color: var(--bg-200);
 	}
-
+	
 	// list group
 	.list-group {
 		box-shadow: none;
@@ -251,7 +251,7 @@
 			margin: 0;
 		}
 	}
-
+	
 	// modal
 	.modal-content {
 		background: var(--bg-400);
@@ -277,11 +277,11 @@
 	input[type="text"] {
 		background-color: var(--bg-400);
 		border: 1px solid var(--border-400);
-
+		
 		border-radius: 4px;
 		padding: 4px 10px;
 	}
-
+	
 	input[type="submit"]:not(.btn) {
 		color: inherit;
 		background-color: var(--bg-400);
@@ -289,7 +289,7 @@
 
 		border-radius: 4px;
 		padding: 4px 20px;
-
+		
 		&:hover,
 		&:focus {
 			background-color: var(--bg-300);
@@ -311,7 +311,7 @@
 			border: 1px solid var(--border-300);
 		}
 	}
-
+	
 	// for simplicity, this basically "assumes" that the button has .btn-default, classes like .btn-info will have a higher specificity and override this
 	.btn {
 		color: inherit;
@@ -328,7 +328,7 @@
 			background: var(--bg-300);
 			border-color: var(--border-300);
 		}
-
+		
 		.navbar-nav &:not(.modal &) {
 			background-color: var(--bg-400);
 			border: 1px solid var(--border-400);
@@ -340,14 +340,14 @@
 			}
 		}
 	}
-
+	
 	@btn-border-darken: 4%; // no need to have this configurable
-
+	
 	#bootstrap-color-btn(@color) {
 		color: @hc-text-color;
 		background: @color;
 		border-color: darken(@color, @btn-border-darken);
-
+		
 		&:hover,
 		&:focus {
 			background: lighten(@color, @btn-hover-ligthen);
@@ -358,7 +358,7 @@
 	.btn.btn-default {
 		color: inherit;
 	}
-
+	
 	.btn-info { #bootstrap-color-btn(@info-color); }
 	.btn.btn-success { #bootstrap-color-btn(@success-color); }
 	.btn.btn-warning { #bootstrap-color-btn(@warning-color); }
@@ -367,7 +367,7 @@
 	.btn-disabled {
 		pointer-events: none;
 	}
-
+	
 	// pagination buttons
 	.pagination > .paginate_button > a {
 		background-color: var(--bg-400);
@@ -379,7 +379,7 @@
 			border-color: var(--border-300);
 		}
 	}
-
+	
 	// regular select input
 	select {
 		color: inherit;
@@ -388,7 +388,7 @@
 		padding: 8px 20px;
 		border-radius: 4px;
 	}
-
+	
 	// select input "select2"
 	.select2-container {
 		.select2-choice {
@@ -411,33 +411,31 @@
 			}
 		}
 	}
-
+	
 	// tabs
 	.nav-tabs {
 		border-color: var(--border-300);
-
-		// ensure all tabs have the same height; issue with multiline text in tabs
-		> li {
-			height: 100%;
-
-			> a {
-				height: 100%;
-			}
-		}
 	}
 
-	.nav-tabs.nav-justified > li > a {
-		color: inherit;
-		background-color: var(--bg-400);
-		border-color: var(--border-400);
-
-		text-decoration: none;
-
-		&:hover,
-		&:focus {
+	.nav-tabs.nav-justified > li {
+		// ensure all tabs have the same height; issue with multiline text in tabs
+		height: 100%;
+		
+		> a {
 			color: inherit;
-			background-color: var(--bg-300);
-			border-color: var(--border-300);
+			background-color: var(--bg-400);
+			border-color: var(--border-400);
+
+			text-decoration: none;
+
+			height: 100%;
+
+			&:hover,
+			&:focus {
+				color: inherit;
+				background-color: var(--bg-300);
+				border-color: var(--border-300);
+			}
 		}
 	}
 
@@ -448,7 +446,7 @@
 		border-color: var(--border-300);
 
 		text-decoration: none;
-
+		
 		&:hover,
 		&:focus {
 			color: inherit;
@@ -475,7 +473,7 @@
 			background: none;
 		}
 	}
-
+	
 	// "form-control"
 	.form-control {
 		color: inherit;
@@ -484,12 +482,12 @@
 	}
 
 	/* tables */
-
+	
 	.table > thead > tr > th,
 	.table > tbody > tr > td {
 		border-color: var(--border-300);
 	}
-
+	
 	// calendar/schedule table
 	.table-hover > tbody > tr:hover {
 		& > th,
@@ -497,11 +495,11 @@
 			background-color: var(--bg-300);
 		}
 	}
-
+	
 	.table-striped > tbody tr:nth-child(2n+1) > td {
 		background-color: var(--bg-300);
 	}
-
+	
 	.table-bordered {
 		border-color: var(--border-300);
 	}
@@ -545,7 +543,7 @@
 	.fc-state-disabled {
 		pointer-events: none;
 	}
-
+	
 	// table height fix
 	.fc-time-grid-container {
 		height: unset !important;
@@ -571,17 +569,17 @@
 			color: desaturate(darken(@link-color, 25%), 25%);
 		}
 	}
-
+	
 	// prevent images extending past its parent, causing it to go under text (white text on a white picture = not good)
 	img {
 		max-width: 100%;
 	}
-
+	
 	// remove height of clearfix itself
 	.clearfix {
 		margin-bottom: -10px;
 	}
-
+	
 	// has a really nasty contrast
 	.panel-info font[color="red"] {
 		color: contrast(@info-color, #ff0000, #fb7d22); // picks the better contrast; for when a custom color is used
