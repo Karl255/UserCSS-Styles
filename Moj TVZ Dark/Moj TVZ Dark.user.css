@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.2.1
+@version      1.2.2
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -417,28 +417,23 @@
 		border-color: var(--border-300);
 	}
 
-	.nav-tabs.nav-justified > li {
-		// ensure all tabs have the same height; issue with multiline text in tabs
-		height: 100%;
-		
-		> a {
+	.nav-tabs > li > a,
+	.nav-tabs.nav-justified > li > a {
 			color: inherit;
 			background-color: var(--bg-400);
 			border-color: var(--border-400);
 
 			text-decoration: none;
 
-			height: 100%;
-
 			&:hover,
 			&:focus {
 				color: inherit;
 				background-color: var(--bg-300);
 				border-color: var(--border-300);
-			}
 		}
 	}
 
+	// active aka current tab
 	.nav-tabs > li.active > a,
 	.nav-tabs.nav-justified > .active > a {
 		color: inherit;
@@ -452,6 +447,16 @@
 			color: inherit;
 			background-color: var(--bg-300);
 			border-color: var(--border-300);
+		}
+	}
+	
+	// ensure all tabs have the same height; issue with multiline text in justified tabs
+	// NOTE: don't add this to regular tabs as well, those are designed to wrap and this will mess that up, because the li elements aren't display: table-cell
+	.nav-tabs.nav-justified > li {
+		height: 100%;
+		
+		> a {
+			height: 100%;
 		}
 	}
 
@@ -568,6 +573,17 @@
 		&:focus {
 			color: desaturate(darken(@link-color, 25%), 25%);
 		}
+	}
+	
+	// why do things like this even exist on that website? an issue with the website's own text editor I assume
+	[style*="color: #000000"],
+	[style*="color: #333333"]{
+		color: inherit !important;
+	}
+	
+	// idk why this was set, but it looks bad, so I'm reverting it (not for monospace, just in case)
+	span[style*="font-family"]:not([style*="font-family: monospace"]) {
+		font-family: inherit !important;
 	}
 	
 	// prevent images extending past its parent, causing it to go under text (white text on a white picture = not good)
