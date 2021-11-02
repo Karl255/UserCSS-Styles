@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.2.2
+@version      1.2.3
 @description  Tamna tema za moj.tvz.hr
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -274,7 +274,8 @@
 	}
 
 	/* inputs and buttons */
-	input[type="text"] {
+	input[type="text"],
+	input[type="password"] {
 		background-color: var(--bg-400);
 		border: 1px solid var(--border-400);
 		
