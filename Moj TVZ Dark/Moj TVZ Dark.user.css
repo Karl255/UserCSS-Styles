@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.0.0
+@version      2.0.1
 @description  Tamna tema za moj.tvz.hr i Grader
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -13,6 +13,7 @@
 @var number bg-l-increment    "Background color lightness increment" 5%
 @var number btn-hover-ligthen "Button color lighten/darken on hover" -5%
 
+@var color  primary-color     "'Primary' color" #337ab7
 @var color  info-color        "'Info' color"    #0b3c85
 @var color  success-color     "'Success' color" #117A11
 @var color  warning-color     "'Warning' color" #8F6F0E
@@ -129,7 +130,7 @@
 	}
 	
 	.navbar-collapse.collapse {
-		flex-grow: 1; // take all the remaining space, needed for the right-aligned nav
+		flex-grow: 1;
 		
 		display: flex !important;
 		align-items: center;
@@ -217,6 +218,7 @@
 	
 	// mixins
 	#bootstrap-colors-bg() {
+		&-primary { background: @primary-color; }
 		&-info    { background: @info-color; }
 		&-success { background: @success-color; }
 		&-warning { background: @warning-color; }
@@ -318,6 +320,13 @@
 			color: #ccc;
 			opacity: .5;
 		}
+	}
+	
+	// labels
+	.label {
+		color: @hc-text-color;
+		
+		#bootstrap-colors-bg();
 	}
 
 	// grader specific things
@@ -436,7 +445,7 @@
 		color: inherit;
 	}
 	
-	.btn-primary { #bootstrap-color-btn(@info-color); }
+	.btn-primary { #bootstrap-color-btn(@primary-color); }
 	.btn-info { #bootstrap-color-btn(@info-color); }
 	.btn.btn-success { #bootstrap-color-btn(@success-color); }
 	.btn.btn-warning { #bootstrap-color-btn(@warning-color); }
