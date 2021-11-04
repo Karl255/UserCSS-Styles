@@ -2,8 +2,8 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      1.2.4
-@description  Tamna tema za moj.tvz.hr
+@version      2.0.0
+@description  Tamna tema za moj.tvz.hr i Grader
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
 @license      MIT
@@ -22,7 +22,9 @@
 @var color  hc-text-color     "High contrast text color for colored background" white
 @var color  link-color        "Link color"                                      #60b1f7
 ==/UserStyle== */
-@-moz-document domain("moj.tvz.hr") {
+@-moz-document domain("moj.tvz.hr"), domain("grader.tvz.hr") {
+	@link-hover-color: desaturate(darken(@link-color, 25%), 25%);
+	
 	* {
 		box-shadow: none !important;
 		text-shadow: none !important;
@@ -45,6 +47,7 @@
 	/* login page only */
 	body:not([background]) {
 		> .main-section {
+			color: inherit;
 			background: url(https://moj.tvz.hr/slika/back.png), white;
 			background-blend-mode: exclusion;
 
@@ -95,6 +98,11 @@
 		color: inherit;
 	}
 	
+	// grader only
+	body.grader {
+		background-color: var(--bg-200);
+	}
+	
 	/* navbar */
 	.navbar {
 		min-height: unset;
@@ -107,11 +115,6 @@
 		box-shadow: none;
 	}
 	
-	// mobile only navbar toggle icon
-	.navbar-header {
-		display: none;
-	}
-	
 	// to properly center the right part of the navbar
 	.navbar-right {
 		margin-left: auto; // push self to the right
@@ -119,19 +122,40 @@
 		align-items: center;
 	}
 
+	.navbar > .container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	
 	.navbar-collapse.collapse {
+		flex-grow: 1; // take all the remaining space, needed for the right-aligned nav
+		
 		display: flex !important;
 		align-items: center;
 	}
 
+	.navbar-default .navbar-brand {
+		color: white;
+		
+		&:hover,
+		&:focus {
+			color: #dddddd;
+			text-decoration: revert; // don't remove the underline on hover
+		}
+	}
+	
+	// empty navbar "brand" only on moj.tvz.hr
+	.navbar-header > .navbar-brand {
+		display: none;
+	}
+	
 	.navbar-form {
 		margin: 0;
 	}
 	
 	// navbar links
-	.navbar-nav a {
-		color: inherit !important;
-
+	.navbar-nav a:not(.notifications-dropdown a) {
 		text-shadow: none !important;
 		text-decoration: none;
 	}
@@ -139,6 +163,13 @@
 	.navbar-collapse > .navbar-nav > li > a {
 		padding-top: 8px;
 		padding-bottom: 8px;
+		
+		color: white;
+		
+		&:hover,
+		&:focus {
+			color: #dddddd;
+		}
 	}
 	
 	// navbar opened dropdowns
@@ -146,6 +177,7 @@
 		&,
 		&:hover,
 		&:focus {
+			color: #dddddd;
 			background-color: var(--bg-300);
 		}
 	}
@@ -165,7 +197,22 @@
 			}
 		}
 	}
+	
+	//grader specific nav stuff
+	.nav .single-notification::after {
+		border-color: var(--border-300);
+	}
 
+	.single-notification:not(.marking-as-unread):hover {
+		background-color: var(--bg-200);
+	}
+	
+	/* footer */
+	
+	footer {
+		background-color: var(--bg-300);
+	}
+	
 	/* panels, alerts and such */
 	
 	// mixins
@@ -273,7 +320,36 @@
 		}
 	}
 
+	// grader specific things
+	// on grader, restore padding-left
+	.student-home-page-summary-box .panel-heading {
+		padding-left: 15px;
+	}
+	
+	.student-home-page-summary-box .badges-box-link,
+	.student-home-page-summary-box .leaderboard-box-link {
+		color: inherit;
+		text-decoration: none;
+		
+		&:hover {
+			color: @link-hover-color;
+		}
+	}
+	
+	div.task-text {
+		color: inherit;
+		background-color: var(--bg-300);
+		border: 1px solid var(--border-300) !important;
+		
+		height: auto !important;
+		
+		.expand-text {
+			display: none;
+		}
+	}
+	
 	/* inputs and buttons */
+	
 	input[type="text"],
 	input[type="password"] {
 		background-color: var(--bg-400);
@@ -360,6 +436,7 @@
 		color: inherit;
 	}
 	
+	.btn-primary { #bootstrap-color-btn(@info-color); }
 	.btn-info { #bootstrap-color-btn(@info-color); }
 	.btn.btn-success { #bootstrap-color-btn(@success-color); }
 	.btn.btn-warning { #bootstrap-color-btn(@warning-color); }
@@ -481,16 +558,33 @@
 	}
 	
 	// "form-control"
-	.form-control {
+	.form-control,
+	.form-control[readonly] {
 		color: inherit;
 		background-color: var(--bg-300);
 		border-color: var(--border-300);
+	}
+	
+	// grader file upload
+	.input-group-addon {
+		color: inherit;
+		background-color: var(--bg-300);
+		border-color: var(--border-300);
+	}
+	
+	// no double border
+	.input-group > .file-name-display {
+		border-right: none;
 	}
 
 	/* tables */
 	
 	.table > thead > tr > th,
-	.table > tbody > tr > td {
+	.table > thead > tr > td,
+	.table > tbody > tr > th,
+	.table > tbody > tr > td,
+	.table > tfoot > tr > th,
+	.table > tfoot > tr > td {
 		border-color: var(--border-300);
 	}
 	
@@ -555,7 +649,23 @@
 		height: unset !important;
 	}
 
+	// progress element on grader; make the points count overflow and be always visible
+	.progress {
+		background-color: var(--bg-300);
+		overflow: visible;
+		white-space: nowrap;
+		isolation: isolate;
+		
+		.progress-bar-success {
+			position: relative;
+			z-index: 1;
+			
+			font-weight: bold;
+		}
+	}
+	
 	/* typography/rest */
+	
 	p,
 	h1,
 	h2,
@@ -566,14 +676,57 @@
 		color: inherit;
 	}
 
+	h1,
+	h2,
+	h3 {
+		small {
+			color: #999;
+		}
+	}
+
+	
 	a {
 		color: @link-color;
 		text-decoration: underline;
 
 		&:hover,
 		&:focus {
-			color: desaturate(darken(@link-color, 25%), 25%);
+			color: @link-hover-color;
 		}
+	}
+	
+	// code blocks and stuff
+	pre {
+		color: inherit;
+		background-color: var(--bg-300);
+		border-color: var(--border-300);
+	}
+	
+	code {
+		color: inherit;
+	}
+	
+	.grader textarea {
+		resize: vertical;
+	}
+	
+	.test-case-container .tc-ok {
+		background-color: var(--bg-300);
+		border-color: @success-color;
+	}
+	
+	.test-case-container .tc-not-ok {
+		background-color: var(--bg-300);
+		border-color: @danger-color;
+	}
+	
+	.diff-overview pre.diff del {
+		color: #ff5e5e;
+		text-decoration: 1px wavy underline currentColor;
+	}
+	
+	.diff-overview pre.diff ins {
+		color: #ffae5e;
 	}
 	
 	// why do things like this even exist on that website? an issue with the website's own text editor I assume
@@ -585,6 +738,20 @@
 	// idk why this was set, but it looks bad, so I'm reverting it (not for monospace, just in case)
 	span[style*="font-family"]:not([style*="font-family: monospace"]) {
 		font-family: inherit !important;
+	}
+	
+	.task-text {
+		span[style*="color:"] {
+			color: inherit !important;
+		}
+		
+		span[style*="background-color:"] {
+			background-color: unset !important;
+		}
+		
+		span[style*="font-family:"] {
+			font-family: inherit !important;
+		}
 	}
 	
 	// prevent images extending past its parent, causing it to go under text (white text on a white picture = not good)
@@ -600,5 +767,172 @@
 	// has a really nasty contrast
 	.panel-info font[color="red"] {
 		color: contrast(@info-color, #ff0000, #fb7d22); // picks the better contrast; for when a custom color is used
+	}
+	
+	
+	/*
+	 * THE FOLLOWING CODE IS A SLIGHTLY MODIFIED HIGHLIGHT.JS THEME
+	 * 
+	 * THE ORIGINAL CODE IS LICENSED UNDER THE BSD-3-Clause License
+	 * 
+	 * SOURCE: https://github.com/highlightjs/highlight.js/blob/main/src/styles/vs2015.css
+	 */
+	
+	pre {
+		tab-size: 4;
+		
+		// .hljs
+		&.source-code-view {
+			//background: #1E1E1E;
+			background: #181818;
+			//color: #DCDCDC;
+			color: #e4e4e4;
+			
+			max-height: 600px;
+		}
+		
+		//.hljs-keyword,
+		//.hljs-literal,
+		//.hljs-symbol,
+		//.hljs-name
+		.keyword,
+		.literl,
+		.symbol,
+		.name {
+			color: #569CD6;
+		}
+		
+		//.hljs-link
+		.link {
+			color: #569CD6;
+			text-decoration: underline;
+		}
+		
+		//.hljs-built_in,
+		//.hljs-type
+		.built_in,
+		.type {
+			color: #4EC9B0;
+		}
+		
+		//.hljs-number,
+		//.hljs-class
+		.number,
+		.class {
+			color: #B8D7A3;
+		}
+		
+		//.hljs-string,
+		//.hljs-meta .hljs-string 
+		.string,
+		.meta .string {
+			color: #D69D85;
+		}
+		
+		//.hljs-regexp,
+		//.hljs-template-tag
+		.regexp,
+		.template-tag {
+			color: #9A5334;
+		}
+		
+		
+		//.hljs-subst,
+		//.hljs-function,
+		//.hljs-title,
+		//.hljs-params,
+		//.hljs-formula
+		.subst,
+		.function,
+		.title,
+		.params,
+		.formula {
+			color: #DCDCDC;
+		}
+		
+		//.hljs-comment,
+		//.hljs-quote
+		.comment,
+		.quote {
+			color: #57A64A;
+			//font-style: italic; // no, this is ugly
+		}
+		
+		//.hljs-doctag
+		.doctag {
+			color: #608B4E;
+		}
+		
+		//.hljs-meta,
+		//.hljs-meta .hljs-keyword,
+		//.hljs-tag
+		.meta,
+		.meta .keyword,
+		.tag,
+		.preprocessor {
+			color: #9B9B9B;
+		}
+		
+		//.hljs-variable,
+		//.hljs-template-variable
+		.variable,
+		.template-variable {
+			color: #BD63C5;
+		}
+		
+		//.hljs-attr,
+		//.hljs-attribute
+		.attr,
+		.attribute {
+			color: #9CDCFE;
+		}
+		
+		//.hljs-section
+		.section {
+			color: gold;
+		}
+		
+		//.hljs-emphasis
+		.emphasis {
+			font-style: italic;
+		}
+		
+		//.hljs-strong
+		.strong {
+			font-weight: bold;
+		}
+		
+		/*.hljs-code {
+		  font-family:'Monospace';
+		}*/
+		
+		//.hljs-bullet,
+		//.hljs-selector-tag,
+		//.hljs-selector-id,
+		//.hljs-selector-class,
+		//.hljs-selector-attr,
+		//.hljs-selector-pseudo
+		.bullet,
+		.selector-tag,
+		.selector-id,
+		.selector-class,
+		.selector-attr,
+		.selector-pseudo {
+			color: #D7BA7D;
+		}
+		
+		//.hljs-addition
+		.addition {
+			background-color: #144212;
+			display: inline-block;
+			width: 100%;
+		}
+		
+		//.hljs-deletion
+		.deletion {
+			background-color: #600;
+			display: inline-block;
+			width: 100%;
+		}
 	}
 }
