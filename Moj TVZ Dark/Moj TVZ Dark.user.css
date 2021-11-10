@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.0.2
+@version      2.1.0
 @description  Tamna tema za moj.tvz.hr i Grader
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -22,6 +22,19 @@
 @var color  text-color        "Text color"                                      whitesmoke
 @var color  hc-text-color     "High contrast text color for colored background" white
 @var color  link-color        "Link color"                                      #60b1f7
+
+@var checkbox grader-whole-task      "Automatically show-all task text" 1
+@var select   grader-whole-in-out    "Expand input and output boxes" {
+	"Small (default)": "small",
+	"Medium*":         "medium",
+	"Large":           "large"
+}
+@var select   grader-code-block-size "Code block height" {
+	"Small (350px, default)": "small",
+	"Medium (600px)*":        "medium",
+	"Large (900px)":          "large",
+	"All":                    "all"
+}
 ==/UserStyle== */
 @-moz-document domain("moj.tvz.hr"), domain("grader.tvz.hr") {
 	@link-hover-color: desaturate(darken(@link-color, 25%), 25%);
@@ -200,12 +213,25 @@
 	}
 	
 	//grader specific nav stuff
-	.nav .single-notification::after {
-		border-color: var(--border-300);
+	.single-notification:not(.marking-as-unread) {
+		//background-color: var(--bg-300); // if ever needed
+		
+		&:hover {
+			background-color: var(--bg-200);
+		}
 	}
-
-	.single-notification:not(.marking-as-unread):hover {
-		background-color: var(--bg-200);
+	
+	.single-notification.unread:not(.marking-as-unread) {
+		background-color: var(--bg-400);
+		
+		&:hover {
+			background-color: var(--bg-300);
+		}
+	}
+	
+	.nav .single-notification::after,
+	.nav .single-notification.unread:not(.marking-as-unread)::after {
+		border-color: var(--border-300);
 	}
 	
 	/* footer */
@@ -350,11 +376,17 @@
 		background-color: var(--bg-300);
 		border: 1px solid var(--border-300) !important;
 		
-		height: auto !important;
-		
-		.expand-text {
-			display: none;
+		& when (@grader-whole-task = 1) {
+			height: auto !important;
+			
+			.expand-text {
+				display: none;
+			}
 		}
+	}
+	
+	.grader div.form-header-line {
+		border-color: var(--border-300);
 	}
 	
 	/* inputs and buttons */
@@ -717,6 +749,17 @@
 	
 	.grader textarea {
 		resize: vertical;
+		
+		& when (@grader-whole-in-out = medium) {
+			height: 200px;
+		}
+		& when (@grader-whole-in-out = large) {
+			height: 400px;
+		}
+	}
+	
+	.grader hr {
+		border-color: var(--border-300);
 	}
 	
 	.test-case-container .tc-ok {
@@ -827,7 +870,15 @@
 			//color: #DCDCDC;
 			color: #e4e4e4;
 			
-			max-height: 600px;
+			& when (@grader-code-block-size = medium) {
+				max-height: 600px;
+			}
+			& when (@grader-code-block-size = large) {
+				max-height: 900px;
+			}
+			& when (@grader-code-block-size = all) {
+				max-height: unset;
+			}
 		}
 		
 		//.hljs-keyword,
