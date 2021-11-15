@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.1.0
+@version      2.1.1
 @description  Tamna tema za moj.tvz.hr i Grader
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -733,6 +733,17 @@
 		&:hover,
 		&:focus {
 			color: @link-hover-color;
+		}
+	}
+	
+	.badges-selector-item {
+		filter: invert(1);
+		transition: transform 200ms ease-in-out;
+		position: relative;
+		
+		&:hover {
+			transform: scale(2.5);
+			
 		}
 	}
 	
