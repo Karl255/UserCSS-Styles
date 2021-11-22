@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.1.1
+@version      2.1.2
 @description  Tamna tema za moj.tvz.hr i Grader
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -288,6 +288,11 @@
 		border-bottom: none;
 
 		margin: -1px -1px 0 -1px; // single property to replace lots of border "magic"
+	}
+	
+	.panel-footer {
+		background-color: var(--bg-300);
+		border: none;
 	}
 	
 	// alert
