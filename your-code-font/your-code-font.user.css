@@ -2,7 +2,7 @@
 @name         your-code-font
 @author       Karl_255
 @namespace    github.com/Karl255
-@version      1.0.0
+@version      1.0.1
 @description  Enforce your favorite monospace (I hope) code font across the web.
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -14,6 +14,7 @@
 /* these can appear on any website */
 pre,
 code,
+.code,
 .hljs,
 .CodeMirror,
 .sourceblock > * > * {
@@ -25,4 +26,22 @@ code,
 	.blob-num {
 		font-family: monospace !important;
 	}
+}
+
+
+@-moz-document domain("gitlab.com") {
+	/* gitlab has some insanely weird CSS */
+	:root {
+		--font-family-monospace: monospace !important;
+	}
+	/*
+	.gl-font-monospace,
+	.gl-font-monospace\!, // <- wtf????
+	.file-content.code pre code,
+	pre, code, kbd, samp,
+	.file-content.code pre,
+	pre.code,
+	pre.code code {
+		font-family: monospace !important;
+	}*/
 }
