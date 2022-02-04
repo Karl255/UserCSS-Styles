@@ -2,42 +2,44 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.0
+@version      2.2.1
 @description  Tamna tema za moj.tvz.hr i Grader
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
 @license      MIT
 @preprocessor less
 
-@var color  bg-color-base     "Base background color"                hsl(210, 5%, 5%)
-@var number bg-l-increment    "Background color lightness increment" 5%
-@var number btn-hover-ligthen "Button color lighten/darken on hover" -5%
+@var color  bg-color-base     "Temeljna pozadinska boja"                                          hsl(210, 5%, 5%)
+@var number bg-l-increment    "Korak posvijetljenja pozadinske boje (za \"slojeve\" sučelja) (%)" 5%
+@var number btn-hover-ligthen "Korak posvijetljenja za gumbe (%)"                                 -5%
 
-@var color  primary-color     "'Primary' color" #337ab7
-@var color  info-color        "'Info' color"    #0b3c85
-@var color  success-color     "'Success' color" #117A11
-@var color  warning-color     "'Warning' color" #8F6F0E
-@var color  danger-color      "'Danger' color"  #900F0F
+@var color  primary-color     "\"Primarna\" boja"    #337ab7
+@var color  info-color        "Boja \"informacija\"" #0b3c85
+@var color  success-color     "Boja \"uspjeh\""      #117A11
+@var color  warning-color     "Boja \"upozorenje\""  #8F6F0E
+@var color  danger-color      "Boja \"opasnost\""    #900F0F
 
-@var color  text-color        "Text color"                                      whitesmoke
-@var color  hc-text-color     "High contrast text color for colored background" white
-@var color  subtext-color     "Subtext (slighly faded text)"                    #cccccc
-@var color  link-color        "Link color"                                      #60b1f7
+@var color  text-color        "Boja glasvnog teksta"                     whitesmoke
+@var color  hc-text-color     "Boja teksta kod obojanih pozadina"        white
+@var color  subtext-color     "Boja podteksta (pomalo izblijeđen tekst)" #cccccc
+@var color  link-color        "Boja poveznica"                           #60b1f7
 
-@var checkbox grader-whole-task      "Automatically show-all task text" 1
-@var select   grader-whole-in-out    "Expand input and output boxes" {
-	"Small (default)": "small",
-	"Medium*":         "medium",
-	"Large":           "large"
+@var text dummy-grader-section "--- Postavke samo za grader sustav ---" ""
+
+@var checkbox grader-whole-task   "Automatski prikaži cijeli tekst zadatka" 1
+@var select   grader-whole-in-out "Veličina okvira za ulaz i izlaz programa" {
+	"Mala (Grader default)": "small",
+	"Srednja*":              "medium",
+	"Velika":                "large"
 }
-@var select   grader-code-block-size "Code block height" {
-	"Small (350px, default)": "small",
-	"Medium (600px)*":        "medium",
-	"Large (900px)":          "large",
-	"All":                    "all"
+@var select   grader-code-block-size "Veličina okvira za kod" {
+	"Mala (350px, grader default)": "small",
+	"Srednja (600px)*":             "medium",
+	"Velika (900px)":               "large",
+	"Prikaži sve":                  "all"
 }
 
-@var checkbox experimental-lms-theme "Experimental LMS theme" 0
+@var checkbox experimental-lms-theme "Eksperimentalna tamna tema za LMS" 0
 
 ==/UserStyle== */
 
@@ -770,8 +772,6 @@
 	}
 	
 	.grader textarea {
-		resize: vertical;
-		
 		& when (@grader-whole-in-out = medium) {
 			height: 200px;
 		}
