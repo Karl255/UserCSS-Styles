@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.3
+@version      2.2.4
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -24,6 +24,8 @@
 @var color  hc-text-color     "Boja teksta kod obojanih pozadina"        white
 @var color  subtext-color     "Boja podteksta (pomalo izblijeđen tekst)" #cccccc
 @var color  link-color        "Boja poveznica"                           #60b1f7
+
+@var checkbox hide-profile-picture "Sakrij profilnu sliku na početnoj strani" 0
 
 @var text dummy-grader-section "--- Postavke samo za grader sustav ---" ""
 
@@ -1932,6 +1934,15 @@
 		
 		img.defaultuserpic {
 			filter: invert(0.8);
+		}
+	}
+}
+
+@-moz-document url("https://moj.tvz.hr/"), regexp("https://moj\\.tvz\\.hr/studij[A-Za-z0-9]*\\?.*"), regexp("https://moj\\.tvz\\.hr/studij[A-Za-z0-9]*/prikaz/mojtvz\\?.*") {
+	// welcome page
+	& when (@hide-profile-picture = 1) {
+		.jumbotron > center > img {
+			display: none;
 		}
 	}
 }
