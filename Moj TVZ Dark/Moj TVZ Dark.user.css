@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.4
+@version      2.2.5
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -26,6 +26,7 @@
 @var color  link-color        "Boja poveznica"                           #60b1f7
 
 @var checkbox hide-profile-picture "Sakrij profilnu sliku na početnoj strani" 0
+@var checkbox show-credits "Prikaži creditse na dnu stranica" 1
 
 @var text dummy-grader-section "--- Postavke samo za grader sustav ---" ""
 
@@ -808,7 +809,8 @@
 	
 	// why do things like this even exist on that website? an issue with the website's own text editor I assume
 	[style*="color: #000000"],
-	[style*="color: #333333"]{
+	[style*="color: #333333"],
+	[style*="color: windowtext"] /* TIL */ {
 		color: inherit !important;
 	}
 	
@@ -849,34 +851,35 @@
 	
 	/* shameless advertizing/theme credits */
 	
-	@ad-text: "Moj TVZ Dark theme by Karlo Bistrički (https://userstyles.world/style/1468/moj-tvz-dark)";
+	@ad-text: "Moj TVZ Dark theme by Karlo Bistrički (https://userstyles.world/style/3078/moj-tvz-dark)";
 	
-	body > .container-fluid > #non-printable > .potpis > .panel.panel-default > .panel-body > .row > .col-xs-6:first-child::before {
-		color: #999;
-		content: @ad-text;
-	}
-	
-	// on grader
-	footer .col-md-12 {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		
-		&::after {
+	& when (@show-credits = 1) {
+		body > .container-fluid > #non-printable > .potpis > .panel.panel-default > .panel-body > .row > .col-xs-6:first-child::before {
+			color: #999;
 			content: @ad-text;
-			
-			color: #999;
-			font-size: .9em;
-			line-height: 1;
 		}
 		
-		> p {
-			color: #999;
-			margin: 0;
+		// on grader
+		footer .col-md-12 {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			
+			&::after {
+				content: @ad-text;
+				
+				color: #999;
+				font-size: .9em;
+				line-height: 1;
+			}
+			
+			> p {
+				color: #999;
+				margin: 0;
+			}
 		}
 	}
-	
 	
 	/*
 	 * THE FOLLOWING CODE IS A SLIGHTLY MODIFIED HIGHLIGHT.JS THEME
