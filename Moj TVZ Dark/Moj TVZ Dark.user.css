@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.5
+@version      2.2.6
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -244,6 +244,12 @@
 	.nav .single-notification::after,
 	.nav .single-notification.unread:not(.marking-as-unread)::after {
 		border-color: var(--border-300);
+	}
+	
+	/* page header */
+		
+	.page-header {
+		border-color: var(--border-200);
 	}
 	
 	/* footer */
