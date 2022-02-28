@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.6
+@version      2.2.7
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -87,14 +87,29 @@
 			// for images that might be added (tested with some of the commented HTML code)
 			> :not(.container-fluid) img {
 				object-fit: contain;
-				max-height: 100vh
+				max-width: 100vw;
+				max-height: 100vh;
 			}
 			
-			// for centering of login div
-			> .container-fluid > .row {
-				display: grid;
-				place-content: center;
-				min-height: 60vh; // set to 100vh for vertical centering
+			// proper centering while keeping the background "banner" stretched
+			> .container-fluid {
+				margin: 0;
+				padding: 0;
+				overflow: clip;
+				
+				> * {
+					display: grid;
+					
+					.row {
+						display: grid;
+						place-items: center;
+					
+						&::before,
+						&::after {
+							display: none;
+						}
+					}
+				}
 			}
 
 			.login-image-main {
@@ -106,10 +121,21 @@
 					width: 100%;
 				}
 			}
+			
+			// mc2 ad
+			.banner {
+				background-repeat: no-repeat;
+				background-size: contain;
+				background-position: bottom;
+				
+				[class*="col"] {
+					place-self: start center;
+				}
+			}
 		}
 	
 		// useless hr that breaks page height
-		> hr {
+		hr {
 			display: none;
 		}
 	}
