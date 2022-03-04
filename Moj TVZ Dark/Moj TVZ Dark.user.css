@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.7
+@version      2.2.8
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -77,24 +77,16 @@
 			background: url(https://moj.tvz.hr/slika/back.png), white;
 			background-blend-mode: exclusion;
 
-			display: grid;
-			
-			// stack everything in the same area
-			> * {
-				grid-area: 1 / 1;
-			}
-			
-			// for images that might be added (tested with some of the commented HTML code)
-			> :not(.container-fluid) img {
-				object-fit: contain;
-				max-width: 100vw;
-				max-height: 100vh;
-			}
+			display: flex;
+			flex-direction: column;
 			
 			// proper centering while keeping the background "banner" stretched
 			> .container-fluid {
+				flex-grow: 1;
+				
 				margin: 0;
 				padding: 0;
+				height: unset !important;
 				overflow: clip;
 				
 				> * {
@@ -128,6 +120,7 @@
 				background-size: contain;
 				background-position: bottom;
 				
+				// place the login form at the top instead of in the center
 				[class*="col"] {
 					place-self: start center;
 				}
@@ -350,7 +343,7 @@
 		
 		// reset color for elements with a dark background
 		select,
-		input[type="submit"]{
+		input[type="submit"] {
 			color: @text-color !important;
 		}
 	}
