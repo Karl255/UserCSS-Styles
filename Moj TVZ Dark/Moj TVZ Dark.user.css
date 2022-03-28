@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.8
+@version      2.2.9
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -37,7 +37,7 @@
 	"Velika":                "large"
 }
 @var select   grader-code-block-size "Veličina okvira za kod" {
-	"Mala (350px, grader default)": "small",
+	"Mala (350px, Grader default)": "small",
 	"Srednja (600px)*":             "medium",
 	"Velika (900px)":               "large",
 	"Prikaži sve":                  "all"
@@ -813,6 +813,11 @@
 		border-color: var(--border-300);
 	}
 	
+	.grader .countdown {
+		background-color: var(--bg-300);
+		border-color: var(--border-300);
+	}
+	
 	.test-case-container .tc-ok {
 		background-color: var(--bg-300);
 		border-color: @success-color;
@@ -834,6 +839,7 @@
 	
 	// why do things like this even exist on that website? an issue with the website's own text editor I assume
 	[style*="color: #000000"],
+	[style*="color: black"],
 	[style*="color: #333333"],
 	[style*="color: windowtext"] /* TIL */ {
 		color: inherit !important;
@@ -1386,9 +1392,6 @@
 			
 				.multiline {
 					color: inherit;
-				}
-				
-				.card .coursemenubtn {
 				}
 			}
 		}
