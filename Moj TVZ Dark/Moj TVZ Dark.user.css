@@ -2,11 +2,11 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.9
+@version      2.2.10
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
-@updateURL    https://raw.githubusercontent.com/Karl255/UserCSS-Styles/master/Moj%20TVZ%20Dark/Moj%20TVZ%20Dark.user.css
+@updateURL    https://userstyles.world/api/style/3078.user.css
 @license      MIT
 @preprocessor less
 
@@ -71,62 +71,56 @@
 	}
 
 	/* login page only */
-	body:not([background]) {
-		> .main-section {
-			color: inherit;
-			background: url(https://moj.tvz.hr/slika/back.png), white;
-			background-blend-mode: exclusion;
+	body > .main-section {
+		color: inherit;
 
-			display: flex;
-			flex-direction: column;
+		display: flex;
+		flex-direction: column;
 			
-			// proper centering while keeping the background "banner" stretched
-			> .container-fluid {
-				flex-grow: 1;
+		// proper centering while keeping the background "banner" stretched
+		> .container-fluid {
+			flex-grow: 1;
+			
+			margin: 0;
+			padding: 0;
+			height: unset !important;
+			overflow: clip;
+			
+			> * {
+				display: grid;
 				
-				margin: 0;
-				padding: 0;
-				height: unset !important;
-				overflow: clip;
-				
-				> * {
+				.row {
 					display: grid;
-					
-					.row {
-						display: grid;
-						place-items: center;
-					
-						&::before,
-						&::after {
-							display: none;
-						}
+					place-items: center;
+				
+					&::before,
+					&::after {
+						display: none;
 					}
 				}
 			}
+		}
 
-			.login-image-main {
-				background-color: var(--bg-200);
-				border: 1px solid var(--border-200);
-				margin: 0;
+		.login-image-main {
+			background-color: var(--bg-200);
+			border: 1px solid var(--border-200);
+			margin: 0;
 
-				.user-image-section > img {
-					width: 100%;
-				}
-			}
-			
-			// mc2 ad
-			.banner {
-				background-repeat: no-repeat;
-				background-size: contain;
-				background-position: bottom;
-				
-				// place the login form at the top instead of in the center
-				[class*="col"] {
-					place-self: start center;
-				}
+			.user-image-section > img {
+				width: 100%;
 			}
 		}
-	
+		
+		// page background
+		.banner {
+			background-color: white;
+			background-blend-mode: exclusion;
+		}
+		
+		center > * {
+			margin-top: 1rem !important;
+		}
+		
 		// useless hr that breaks page height
 		hr {
 			display: none;
