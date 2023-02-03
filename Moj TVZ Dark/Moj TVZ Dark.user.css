@@ -567,6 +567,26 @@
 		}
 	}
 	
+	// choose file input
+	.bootstrap-filestyle.input-group {
+		input[type="text"] {
+			background-color: var(--bg-400);
+		}
+		
+		input[type="text"][disabled] {
+			background-color: var(--bg-300);
+		}
+	}
+	
+	// date-time picker
+	.bootstrap-datetimepicker-widget {
+		td span:not(.active):hover,
+		thead tr:first-child th:hover,
+		td.day:not(.active):hover {
+			background-color: var(--bg-200);
+		}
+	}
+	
 	// tabs
 	.nav-tabs {
 		border-color: var(--border-300);
