@@ -13,39 +13,32 @@
 
 @-moz-document domain("github.com") {
 	/* when the activity overview is enabled the grid rects are 10px * 10px (3px spacing) */
-	.mt-4.position-relative > .d-flex svg.js-calendar-graph-svg {
+	.mt-4.position-relative > .d-flex .ContributionCalendar-grid {
 		--dist: 13px;
 	}
-	
+
 	/* but when it's disabled, they're 12px * 12px (3px spacing) */
-	.mt-4.position-relative > .js-yearly-contributions svg.js-calendar-graph-svg {
+	.mt-4.position-relative > .js-yearly-contributions .ContributionCalendar-grid {
 		--dist: 15px;
 	}
-	
+
 	/* all days up a little */
-	svg.js-calendar-graph-svg > g > g > rect {
-		transform: translate(0px, calc(var(--dist) * -1));
+	.ContributionCalendar-grid tbody tr {
+		transform: translateY(calc(var(--dist) * -1));
 	}
-	
-	/* all sundays all the way down and 1 to the left */
-	svg.js-calendar-graph-svg > g > g > rect:first-child {
-		transform: translate(calc(var(--dist) * -1), calc(var(--dist) * 6));
+
+	/* all sundays all the way down */
+	.ContributionCalendar-grid tbody tr:first-child {
+		transform: translateY(calc(var(--dist) * 6));
 	}
-	
+
 	/* hide first sunday (otherwise it'll be outside the box) */
-	svg.js-calendar-graph-svg > g > g:first-child > rect:first-child {
+	.ContributionCalendar-grid tbody tr:first-child .ContributionCalendar-label + .ContributionCalendar-day {
 		display: none;
 	}
-	
-	/* adjust day texts */
-	/* week day texts (and only them) are positioned with dx */
-	svg.js-calendar-graph-svg > g > text[dx] {
-		transform: translate(0px, calc(var(--dist) * -1));
-	}
-	
-	/* show and reposition sunday text */
-	svg.js-calendar-graph-svg > g > text[dx]:nth-last-child(7) {
-		transform: translate(0px, calc(var(--dist) * 6));
-		display: inline !important;
+
+	/* show sunday text */
+	.ContributionCalendar-grid tbody tr:first-child .ContributionCalendar-label span:last-child  {
+		clip-path: unset !important;
 	}
 }
