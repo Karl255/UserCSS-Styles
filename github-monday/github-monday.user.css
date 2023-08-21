@@ -2,7 +2,7 @@
 @name         github-monday
 @author       Karl_255
 @namespace    github.com/Karl255
-@version      1.0.2
+@version      1.0.3
 @description  A style to fix the calendar's first day of week on GitHub user profile pages.
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -33,7 +33,7 @@
 	}
 
 	/* hide first sunday (otherwise it'll be outside the box) */
-	.ContributionCalendar-grid tbody tr:first-child .ContributionCalendar-label + .ContributionCalendar-day {
+	.ContributionCalendar-grid tbody tr:first-child .ContributionCalendar-label + * {
 		display: none;
 	}
 
