@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      2.2.10
+@version      2.2.11
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -132,16 +132,12 @@
 		background-color: #ffffff;
 		background-blend-mode: exclusion; // XOR grid pattern with white, eg. invert grid pattern colors
 	}
-	
+
 	body {
 		color: inherit;
+		background-color: var(--bg-200); // accounts for special pages on moj.tvz.hr (ex: /service/popis_pred_ex.php) and grader
 	}
-	
-	// grader only
-	body.grader {
-		background-color: var(--bg-200);
-	}
-	
+
 	/* navbar */
 	.navbar {
 		min-height: unset;
@@ -1103,6 +1099,11 @@
 
 // NOTE: this is far from being done and is a massive undertaking due to Moodle having so many duplicate styling and the design not being very compatible with dark themes, meaning some things need to be redesigned
 @-moz-document domain("lms-2020.tvz.hr") {
+	:root {
+		// so that stylus still lists this userstyle as applied on this site, while having the experiment turned off
+		--_: "";
+	}
+	
 	& when (@experimental-lms-theme = 1) {
 		// TODO: reevaluate colors
 		@lms-accent: #0075d5;
