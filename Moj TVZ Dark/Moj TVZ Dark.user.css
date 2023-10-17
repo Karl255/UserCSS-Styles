@@ -49,7 +49,7 @@
 
 @-moz-document domain("moj.tvz.hr"), domain("grader.tvz.hr") {
 	@link-hover-color: desaturate(darken(@link-color, 25%), 25%);
-	
+
 	* {
 		box-shadow: none !important;
 		text-shadow: none !important;
@@ -58,7 +58,7 @@
 
 	:root {
 		color: @text-color;
-		
+
 		@border-color-base: lighten(@bg-color-base, @bg-l-increment);
 		--bg-100: @bg-color-base;                               // unused on moj.tvz.hr and Grader
 		--bg-200: lighten(@bg-color-base, @bg-l-increment);     // bottom/base panels
@@ -76,23 +76,23 @@
 
 		display: flex;
 		flex-direction: column;
-			
+
 		// proper centering while keeping the background "banner" stretched
 		> .container-fluid {
 			flex-grow: 1;
-			
+
 			margin: 0;
 			padding: 0;
 			height: unset !important;
 			overflow: clip;
-			
+
 			> * {
 				display: grid;
-				
+
 				.row {
 					display: grid;
 					place-items: center;
-				
+
 					&::before,
 					&::after {
 						display: none;
@@ -110,17 +110,17 @@
 				width: 100%;
 			}
 		}
-		
+
 		// page background
 		.banner {
 			background-color: white;
 			background-blend-mode: exclusion;
 		}
-		
+
 		center > * {
 			margin-top: 1rem !important;
 		}
-		
+
 		// useless hr that breaks page height
 		+ hr {
 			display: none;
@@ -149,7 +149,7 @@
 
 		box-shadow: none;
 	}
-	
+
 	// to properly center the right part of the navbar
 	.navbar-right {
 		margin-left: auto; // push self to the right
@@ -162,33 +162,33 @@
 		flex-direction: row;
 		align-items: center;
 	}
-	
+
 	.navbar-collapse.collapse {
 		flex-grow: 1;
-		
+
 		display: flex !important;
 		align-items: center;
 	}
 
 	.navbar-default .navbar-brand {
 		color: white;
-		
+
 		&:hover,
 		&:focus {
 			color: #dddddd;
 			text-decoration: revert; // don't remove the underline on hover
 		}
 	}
-	
+
 	// empty navbar "brand" only on moj.tvz.hr
 	.navbar-header > .navbar-brand {
 		display: none;
 	}
-	
+
 	.navbar-form {
 		margin: 0;
 	}
-	
+
 	// navbar links
 	.navbar-nav a:not(.notifications-dropdown a) {
 		text-shadow: none !important;
@@ -198,15 +198,15 @@
 	.navbar-collapse > .navbar-nav > li > a {
 		padding-top: 8px;
 		padding-bottom: 8px;
-		
+
 		color: white;
-		
+
 		&:hover,
 		&:focus {
 			color: #dddddd;
 		}
 	}
-	
+
 	// navbar opened dropdowns
 	.navbar-default .navbar-nav > .open > a {
 		&,
@@ -232,43 +232,43 @@
 			}
 		}
 	}
-	
+
 	//grader specific nav stuff
 	.single-notification:not(.marking-as-unread) {
 		//background-color: var(--bg-300); // if ever needed
-		
+
 		&:hover {
 			background-color: var(--bg-200);
 		}
 	}
-	
+
 	.single-notification.unread:not(.marking-as-unread) {
 		background-color: var(--bg-400);
-		
+
 		&:hover {
 			background-color: var(--bg-300);
 		}
 	}
-	
+
 	.nav .single-notification::after,
 	.nav .single-notification.unread:not(.marking-as-unread)::after {
 		border-color: var(--border-300);
 	}
-	
+
 	/* page header */
-		
+
 	.page-header {
 		border-color: var(--border-200);
 	}
-	
+
 	/* footer */
-	
+
 	footer {
 		background-color: var(--bg-300);
 	}
-	
+
 	/* panels, alerts and such */
-	
+
 	// mixins
 	#bootstrap-colors-bg() {
 		&-primary { background: @primary-color; }
@@ -277,7 +277,7 @@
 		&-warning { background: @warning-color; }
 		&-danger  { background: @danger-color; }
 	}
-	
+
 	#bootstrap-colors-panel-heading() {
 		// NOTE: bootstrap has "priamry panels", but they're not used on moj.tvz.hr
 		&-default .panel-heading { background: var(--bg-300); color: inherit !important; }
@@ -286,13 +286,13 @@
 		&-warning .panel-heading { background: @warning-color; }
 		&-danger  .panel-heading { background: @danger-color; }
 	}
-	
+
 	#bootstrap-colors-lgi() {
 		&-info    { background-color: @info-color; }
 		&-success { background-color: @success-color; }
 		&-warning { background-color: @warning-color; }
 		&-danger  { background-color: @danger-color; }
-		
+
 		&-info,
 		&-success,
 		&-warning,
@@ -301,7 +301,7 @@
 			border: none;
 		}
 	}
-	
+
 	// panels
 	.panel {
 		background-color: var(--bg-200);
@@ -316,12 +316,12 @@
 
 		margin: -1px -1px 0 -1px; // single property to replace lots of border "magic"
 	}
-	
+
 	.panel-footer {
 		background-color: var(--bg-300);
 		border: none;
 	}
-	
+
 	// alert
 	.alert {
 		color: @hc-text-color;
@@ -330,19 +330,19 @@
 
 		box-shadow: none;
 		text-shadow: none;
-		
+
 		// reset color for elements with a dark background
 		select,
 		input[type="submit"] {
 			color: @text-color !important;
 		}
 	}
-	
+
 	// jumbotron
 	.jumbotron {
 		background-color: var(--bg-200);
 	}
-	
+
 	// list group
 	.list-group {
 		box-shadow: none;
@@ -358,7 +358,7 @@
 			margin: 0;
 		}
 	}
-	
+
 	// modal
 	.modal-content {
 		background: var(--bg-400);
@@ -379,11 +379,11 @@
 			opacity: .5;
 		}
 	}
-	
+
 	// labels
 	.label {
 		color: @hc-text-color;
-		
+
 		#bootstrap-colors-bg();
 	}
 
@@ -392,46 +392,46 @@
 	.student-home-page-summary-box .panel-heading {
 		padding-left: 15px;
 	}
-	
+
 	.student-home-page-summary-box .badges-box-link,
 	.student-home-page-summary-box .leaderboard-box-link {
 		color: inherit;
 		text-decoration: none;
-		
+
 		&:hover {
 			color: @link-hover-color;
 		}
 	}
-	
+
 	div.task-text {
 		color: inherit;
 		background-color: var(--bg-300);
 		border: 1px solid var(--border-300) !important;
-		
+
 		& when (@grader-whole-task = 1) {
 			height: auto !important;
-			
+
 			.expand-text {
 				display: none;
 			}
 		}
 	}
-	
+
 	.grader div.form-header-line {
 		border-color: var(--border-300);
 	}
-	
+
 	/* inputs and buttons */
-	
+
 	input[type="text"],
 	input[type="password"] {
 		background-color: var(--bg-400);
 		border: 1px solid var(--border-400);
-		
+
 		border-radius: 4px;
 		padding: 4px 10px;
 	}
-	
+
 	input[type="submit"]:not(.btn) {
 		color: inherit;
 		background-color: var(--bg-400);
@@ -439,7 +439,7 @@
 
 		border-radius: 4px;
 		padding: 4px 20px;
-		
+
 		&:hover,
 		&:focus {
 			background-color: var(--bg-300);
@@ -461,7 +461,7 @@
 			border: 1px solid var(--border-300);
 		}
 	}
-	
+
 	// for simplicity, this basically "assumes" that the button has .btn-default, classes like .btn-info will have a higher specificity and override this
 	.btn {
 		color: inherit;
@@ -478,7 +478,7 @@
 			background: var(--bg-300);
 			border-color: var(--border-300);
 		}
-		
+
 		.navbar-nav &:not(.modal &) {
 			background-color: var(--bg-400);
 			border: 1px solid var(--border-400);
@@ -490,14 +490,14 @@
 			}
 		}
 	}
-	
+
 	@btn-border-darken: 4%; // no need to have this configurable
-	
+
 	#bootstrap-color-btn(@color) {
 		color: @hc-text-color;
 		background: @color;
 		border-color: darken(@color, @btn-border-darken);
-		
+
 		&:hover,
 		&:focus {
 			background: lighten(@color, @btn-hover-ligthen);
@@ -508,7 +508,7 @@
 	.btn.btn-default {
 		color: inherit;
 	}
-	
+
 	.btn-primary { #bootstrap-color-btn(@primary-color); }
 	.btn-info { #bootstrap-color-btn(@info-color); }
 	.btn.btn-success { #bootstrap-color-btn(@success-color); }
@@ -518,7 +518,7 @@
 	.btn-disabled {
 		pointer-events: none;
 	}
-	
+
 	// pagination buttons
 	.pagination > .paginate_button > a {
 		background-color: var(--bg-400);
@@ -530,7 +530,7 @@
 			border-color: var(--border-300);
 		}
 	}
-	
+
 	// regular select input
 	select {
 		color: inherit;
@@ -539,7 +539,7 @@
 		padding: 8px 20px;
 		border-radius: 4px;
 	}
-	
+
 	// select input "select2"
 	.select2-container {
 		.select2-choice {
@@ -562,18 +562,18 @@
 			}
 		}
 	}
-	
+
 	// choose file input
 	.bootstrap-filestyle.input-group {
 		input[type="text"] {
 			background-color: var(--bg-400);
 		}
-		
+
 		input[type="text"][disabled] {
 			background-color: var(--bg-300);
 		}
 	}
-	
+
 	// date-time picker
 	.bootstrap-datetimepicker-widget {
 		td span:not(.active):hover,
@@ -582,7 +582,7 @@
 			background-color: var(--bg-200);
 		}
 	}
-	
+
 	// tabs
 	.nav-tabs {
 		border-color: var(--border-300);
@@ -612,7 +612,7 @@
 		border-color: var(--border-300);
 
 		text-decoration: none;
-		
+
 		&:hover,
 		&:focus {
 			color: inherit;
@@ -620,12 +620,12 @@
 			border-color: var(--border-300);
 		}
 	}
-	
+
 	// ensure all tabs have the same height; issue with multiline text in justified tabs
 	// NOTE: don't add this to regular tabs as well, those are designed to wrap and this will mess that up, because the li elements aren't display: table-cell
 	.nav-tabs.nav-justified > li {
 		height: 100%;
-		
+
 		> a {
 			height: 100%;
 		}
@@ -649,7 +649,7 @@
 			background: none;
 		}
 	}
-	
+
 	// "form-control"
 	.form-control,
 	.form-control[readonly] {
@@ -657,21 +657,21 @@
 		background-color: var(--bg-300);
 		border-color: var(--border-300);
 	}
-	
+
 	// grader file upload
 	.input-group-addon {
 		color: inherit;
 		background-color: var(--bg-300);
 		border-color: var(--border-300);
 	}
-	
+
 	// no double border
 	.input-group > .file-name-display {
 		border-right: none;
 	}
 
 	/* tables */
-	
+
 	.table > thead > tr > th,
 	.table > thead > tr > td,
 	.table > tbody > tr > th,
@@ -680,7 +680,7 @@
 	.table > tfoot > tr > td {
 		border-color: var(--border-300);
 	}
-	
+
 	// calendar/schedule table
 	.table-hover > tbody > tr:hover {
 		& > th,
@@ -688,11 +688,11 @@
 			background-color: var(--bg-300);
 		}
 	}
-	
+
 	.table-striped > tbody tr:nth-child(2n+1) > td {
 		background-color: var(--bg-300);
 	}
-	
+
 	.table-bordered {
 		border-color: var(--border-300);
 	}
@@ -736,7 +736,7 @@
 	.fc-state-disabled {
 		pointer-events: none;
 	}
-	
+
 	// table height fix
 	.fc-time-grid-container {
 		height: unset !important;
@@ -748,17 +748,17 @@
 		overflow: visible;
 		white-space: nowrap;
 		isolation: isolate;
-		
+
 		.progress-bar-success {
 			position: relative;
 			z-index: 1;
-			
+
 			font-weight: bold;
 		}
 	}
-	
+
 	/* typography/rest */
-	
+
 	p,
 	h1,
 	h2,
@@ -777,7 +777,7 @@
 		}
 	}
 
-	
+
 	a {
 		color: @link-color;
 		text-decoration: underline;
@@ -787,29 +787,29 @@
 			color: @link-hover-color;
 		}
 	}
-	
+
 	.badges-selector-item {
 		filter: invert(1);
 		transition: transform 200ms ease-in-out;
 		position: relative;
-		
+
 		&:hover {
 			transform: scale(2.5);
-			
+
 		}
 	}
-	
+
 	// code blocks and stuff
 	pre {
 		color: inherit;
 		background-color: var(--bg-300);
 		border-color: var(--border-300);
 	}
-	
+
 	code {
 		color: inherit;
 	}
-	
+
 	.grader textarea {
 		& when (@grader-whole-in-out = medium) {
 			height: 200px;
@@ -818,35 +818,35 @@
 			height: 400px;
 		}
 	}
-	
+
 	.grader hr {
 		border-color: var(--border-300);
 	}
-	
+
 	.grader .countdown {
 		background-color: var(--bg-300);
 		border-color: var(--border-300);
 	}
-	
+
 	.test-case-container .tc-ok {
 		background-color: var(--bg-300);
 		border-color: @success-color;
 	}
-	
+
 	.test-case-container .tc-not-ok {
 		background-color: var(--bg-300);
 		border-color: @danger-color;
 	}
-	
+
 	.diff-overview pre.diff del {
 		color: #ff5e5e;
 		text-decoration: 1px wavy underline currentColor;
 	}
-	
+
 	.diff-overview pre.diff ins {
 		color: #ffae5e;
 	}
-	
+
 	// why do things like this even exist on that website? an issue with the website's own text editor I assume
 	[style*="color: #000000"],
 	[style*="color: black"],
@@ -854,92 +854,92 @@
 	[style*="color: windowtext"] /* TIL */ {
 		color: inherit !important;
 	}
-	
+
 	// idk why this was set, but it looks bad, so I'm reverting it (not for monospace, just in case)
 	span[style*="font-family"]:not([style*="font-family: monospace"]) {
 		font-family: inherit !important;
 	}
-	
+
 	// screw inline styles for Grader task texts
 	.task-text {
 		[style*="color:"] {
 			color: inherit !important;
 		}
-		
+
 		[style*="background-color:"] {
 			background-color: unset !important;
 		}
-		
+
 		[style*="font-family:"] {
 			font-family: inherit !important;
 		}
 	}
-	
+
 	// prevent images extending past its parent, causing it to go under text (white text on a white picture = not good)
 	img:not(table img) {
 		max-width: 100%;
 	}
-	
+
 	// remove height of clearfix itself
 	.clearfix {
 		margin-bottom: -10px;
 	}
-	
+
 	// has a really nasty contrast
 	.panel-info font[color="red"] {
 		color: contrast(@info-color, #ff0000, #fb7d22); // picks the better contrast; for when a custom color is used
 	}
-	
+
 	/* shameless advertizing/theme credits */
-	
+
 	@ad-text: "Moj TVZ Dark theme by Karlo Bistrički (https://userstyles.world/style/3078/moj-tvz-dark)";
-	
+
 	& when (@show-credits = 1) {
 		body > .container-fluid > #non-printable > .potpis > .panel.panel-default > .panel-body > .row > .col-xs-6:first-child::before {
 			color: #999;
 			content: @ad-text;
 		}
-		
+
 		// on grader
 		footer .col-md-12 {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: center;
-			
+
 			&::after {
 				content: @ad-text;
-				
+
 				color: #999;
 				font-size: .9em;
 				line-height: 1;
 			}
-			
+
 			> p {
 				color: #999;
 				margin: 0;
 			}
 		}
 	}
-	
+
 	/*
 	 * THE FOLLOWING CODE IS A SLIGHTLY MODIFIED HIGHLIGHT.JS THEME
-	 * 
+	 *
 	 * THE ORIGINAL CODE IS LICENSED UNDER THE BSD-3-Clause License
-	 * 
+	 *
 	 * SOURCE: https://github.com/highlightjs/highlight.js/blob/main/src/styles/vs2015.css
 	 */
-	
+
 	pre {
 		tab-size: 4;
-		
+
 		// .hljs
 		&.source-code-view {
 			//background: #1E1E1E;
 			background: #181818;
 			//color: #DCDCDC;
 			color: #e4e4e4;
-			
+
 			& when (@grader-code-block-size = medium) {
 				max-height: 600px;
 			}
@@ -950,7 +950,7 @@
 				max-height: unset;
 			}
 		}
-		
+
 		//.hljs-keyword,
 		//.hljs-literal,
 		//.hljs-symbol,
@@ -961,42 +961,42 @@
 		.name {
 			color: #569CD6;
 		}
-		
+
 		//.hljs-link
 		.link {
 			color: #569CD6;
 			text-decoration: underline;
 		}
-		
+
 		//.hljs-built_in,
 		//.hljs-type
 		.built_in,
 		.type {
 			color: #4EC9B0;
 		}
-		
+
 		//.hljs-number,
 		//.hljs-class
 		.number,
 		.class {
 			color: #B8D7A3;
 		}
-		
+
 		//.hljs-string,
-		//.hljs-meta .hljs-string 
+		//.hljs-meta .hljs-string
 		.string,
 		.meta .string {
 			color: #D69D85;
 		}
-		
+
 		//.hljs-regexp,
 		//.hljs-template-tag
 		.regexp,
 		.template-tag {
 			color: #9A5334;
 		}
-		
-		
+
+
 		//.hljs-subst,
 		//.hljs-function,
 		//.hljs-title,
@@ -1009,7 +1009,7 @@
 		.formula {
 			color: #DCDCDC;
 		}
-		
+
 		//.hljs-comment,
 		//.hljs-quote
 		.comment,
@@ -1017,12 +1017,12 @@
 			color: #57A64A;
 			//font-style: italic; // no, this is ugly
 		}
-		
+
 		//.hljs-doctag
 		.doctag {
 			color: #608B4E;
 		}
-		
+
 		//.hljs-meta,
 		//.hljs-meta .hljs-keyword,
 		//.hljs-tag
@@ -1032,40 +1032,40 @@
 		.preprocessor {
 			color: #9B9B9B;
 		}
-		
+
 		//.hljs-variable,
 		//.hljs-template-variable
 		.variable,
 		.template-variable {
 			color: #BD63C5;
 		}
-		
+
 		//.hljs-attr,
 		//.hljs-attribute
 		.attr,
 		.attribute {
 			color: #9CDCFE;
 		}
-		
+
 		//.hljs-section
 		.section {
 			color: gold;
 		}
-		
+
 		//.hljs-emphasis
 		.emphasis {
 			font-style: italic;
 		}
-		
+
 		//.hljs-strong
 		.strong {
 			font-weight: bold;
 		}
-		
+
 		/*.hljs-code {
 		  font-family:'Monospace';
 		}*/
-		
+
 		//.hljs-bullet,
 		//.hljs-selector-tag,
 		//.hljs-selector-id,
@@ -1080,14 +1080,14 @@
 		.selector-pseudo {
 			color: #D7BA7D;
 		}
-		
+
 		//.hljs-addition
 		.addition {
 			background-color: #144212;
 			display: inline-block;
 			width: 100%;
 		}
-		
+
 		//.hljs-deletion
 		.deletion {
 			background-color: #600;
@@ -1103,21 +1103,21 @@
 		// so that stylus still lists this userstyle as applied on this site, while having the experiment turned off
 		--_: "";
 	}
-	
+
 	& when (@experimental-lms-theme = 1) {
 		// TODO: reevaluate colors
 		@lms-accent: #0075d5;
 		@lms-accent-2: #7a1661;
 		@dimmed-text: #666;
-		
+
 		#border-deco-bottom-w-after(@absolute: true) {
 			background: none;
 			position: relative;
 			isolation: isolate;
-			
+
 			&::after {
 				content: "";
-				
+
 				& when (@absolute = true) { position: absolute; }
 				bottom: 1px;
 				height: 1px;
@@ -1126,19 +1126,19 @@
 				width: 100%;
 				max-width: unset;
 				z-index: -1;
-				
+
 				background-color: var(--border-300);
 			}
 		}
-		
+
 		#border-deco-bottom-w-before(@absolute: true) {
 			background: none;
 			position: relative;
 			isolation: isolate;
-			
+
 			&::before {
 				content: "";
-				
+
 				& when (@absolute = true) { position: absolute; }
 				bottom: 1px;
 				height: 1px;
@@ -1147,19 +1147,19 @@
 				width: 100%;
 				max-width: unset;
 				z-index: -1;
-				
+
 				background-color: var(--border-300);
 			}
 		}
-		
+
 		#border-deco-top(@absolute: true) {
 			background: none;
 			position: relative;
 			isolation: isolate;
-			
+
 			&::after {
 				content: "";
-				
+
 				& when (@absolute = true) { position: absolute; }
 				top: 0;
 				height: 1px;
@@ -1168,115 +1168,115 @@
 				width: 100%;
 				max-width: unset;
 				z-index: -1;
-				
+
 				background-color: var(--border-300);
 			}
 		}
-		
+
 		:root {
 			color: @text-color;
-			
+
 			@border-color-base: lighten(@bg-color-base, @bg-l-increment);
 			--bg-100: @bg-color-base;                               // page wrapper
 			--bg-200: lighten(@bg-color-base, @bg-l-increment);     // navbar, footer, first layer elements
 			--bg-300: lighten(@bg-color-base, 2 * @bg-l-increment); // dropdowns
-			--bg-400: lighten(@bg-color-base, 3 * @bg-l-increment); // 
+			--bg-400: lighten(@bg-color-base, 3 * @bg-l-increment); //
 			--border-100: @border-color-base;
 			--border-200: lighten(@border-color-base, @bg-l-increment);
 			--border-300: lighten(@border-color-base, 2 * @bg-l-increment);
 			--border-400: lighten(@border-color-base, 3 * @bg-l-increment);
 		}
-		
+
 		body {
 			color: inherit;
-			
+
 			// TODO: find a better technique to fit the background for the dark theme
 			@overlay-color: hsl(250deg 25% 8%) !important; // the !important is needed for the login page
 			background-color: @overlay-color;
 			background-blend-mode: multiply;
 		}
-		
+
 		/* login page specific */
-		
+
 		.path-login form#login {
 			background: none;
 			border: 2px solid var(--border-100);
 		}
-		
+
 		.card-body form button#loginbtn {
 			background-color: @success-color !important;
 		}
-		
+
 		/* header */
-		
+
 		#page-header,
 		#page-content #page-header {
 			background: var(--bg-100);
 		}
-		
+
 		.logo img {
 			filter: brightness(1.75);
 		}
-		
+
 		#loggedin-user .usertext {
 			color: @lms-accent;
 		}
-		
+
 		#loggedin-user .usermenu .dropdown > a {
 			// was overridden by a difference class with !important, doing this also solves several issues (underline, weird transitions, colors...)
 			display: contents !important;
 		}
-		
+
 		/* navbar */
-		
+
 		.navbar-inner {
 			background: var(--bg-200);
 		}
-		
+
 		.navbar {
 			.nav li > a:hover {
 				background: @lms-accent-2 !important;
 			}
-			
+
 			.brand:hover {
 				background: @lms-accent-2 !important;
 			}
-			
+
 			#search button[type="submit"]:hover {
 				background-color: @lms-accent-2 !important;
 			}
 		}
-		
+
 		/* main content */
-		
+
 		#page {
 			background: var(--bg-100) !important;
 			border-color: var(--border-100) !important;
 			border-width: 4px !important;
 		}
-			
+
 		/* footer */
-		
+
 		#page-footer,
 		.footerlinks {
 			color: inherit;
 			background-color: var(--bg-200);
 		}
-		
+
 		#page-footer .socials .social_icons a.social {
 			background: @text-color;
 		}
-		
+
 		#page-footer .content a,
 		#page-footer .footerlinks a,
 		.footerlinks .helplink a {
 			color: @link-color;
 		}
-		
+
 		#page-footer .row-fluid .span4 {
 			min-height: 0;
 		}
-		
+
 		/* courses */
 		#frontpage-available-course-list,
 		#frontpage-category-combo,
@@ -1289,9 +1289,9 @@
 				#border-deco-bottom-w-before();
 			}
 		}
-		
+
 		/* course stuff */
-		
+
 		.courses .coursebox {
 			&,
 			&.even,
@@ -1300,298 +1300,298 @@
 				border-color: var(--border-200);
 			}
 		}
-		
+
 		.coursebox {
 			display: flex;
 			flex-direction: column;
-			
+
 			min-height: 370px;
 			overflow: hidden; // so images don't extend over rounded corners
 			box-shadow: 0 0 10px hsl(0 0% 0% / 0.30);
-			
+
 			.content {
 				flex-grow: 1;
-				
+
 				display: flex;
 				flex-direction: column;
-				
+
 				.summary,
 				.teachers {
 					padding: 0 1em;
 				}
-				
+
 				.summary {
 					height: unset;
 				}
-				
+
 				.teachers {
 					display: block;
 					margin: 0;
 					margin-top: auto; // push itself down, causing it to get separated from the summary text
 				}
-				
+
 				.course-btn {
 					margin-bottom: 1em;
 				}
-				
+
 				h3.coursename {
 					margin-top: .25em;
-					
+
 					a {
 						color: inherit;
-						
+
 						&:hover {
 							color: inherit;
 						}
 					}
 				}
 			}
-			
+
 			&:hover {
 				transform: translateY(-3px); // default is only 1px, which is barely noticable
 			}
 		}
-		
+
 		.content {
 			h3.sectionname {
 				background: var(--bg-200);
 				border-top-color: var(--border-200);
 				border-bottom-color: var(--border-200);
 				border-right-color: var(--border-200);
-				
+
 				&,
 				& a {
 					color: inherit !important;
 				}
 			}
 		}
-		
+
 		.course-content .current {
 			background-color: transparent !important;
-			
+
 			.content {
 				background-color: transparent;
 			}
-			
+
 			h3 {
 				border-color: @warning-color;
 			}
 		}
-		
+
 		#section-0 .content > h3.sectionname {
 			#border-deco-bottom-w-before();
 		}
-		
+
 		.section .activity .actions {
 			background: none;
 		}
-		
+
 		/* blocks */
-		
+
 		.block {
 			background: var(--bg-200);
 			border-color: var(--border-200);
-			
+
 			.blockstyle-02 & {
 				background: var(--bg-200);
 			}
-			
+
 			.card-title {
 				#border-deco-bottom-w-after();
 			}
-			
+
 			.block-cards {
 				a.coursename {
 					color: @text-color;
 				}
-			
+
 				.multiline {
 					color: inherit;
 				}
 			}
 		}
-		
+
 		// proper centerin and "dark themed"
 		.block-myoverview.block-cards .dashboard-card-deck .ml-auto.dropdown {
 			display: grid;
 			place-items: center;
-			
+
 			background: hsl(0 0% 0% / .5);
 		}
-		
+
 		.block .block-cards .card .coursemenubtn {
 			display: contents;
-			
+
 			> img.icon {
 				position: static !important;
 				filter: brightness(1.25);
 			}
 		}
-		
+
 		/* cards */
-		
+
 		.card {
 			background-color: var(--bg-200);
 		}
-		
+
 		.card.dashboard-card {
 			background-color: var(--bg-200);
 			border-color: var(--border-200);
 			overflow: hidden; // images again
 		}
-		
+
 		/* user profile, profile tree */
-		
+
 		.path-user #region-main .profile_tree {
 			#border-deco-top();
 		}
-		
+
 		.userprofile .profile_tree section {
 			border-color: var(--border-200);
 		}
-		
+
 		/* messages page stuff */
-		
+
 		#page-message-index {
 			#region-main {
 				.bg-light {
 					background-color: var(--bg-200) !important;
 					border-color: var(--border-200);
 				}
-				
+
 				.message-app {
 					.body-container {
 						background-color: var(--bg-200) !important;
 					}
-				
+
 					.container-fluid .btn.btn-link,
 					.container-fluid .btn.btn-link:hover {
 						color: inherit !important;
 						background: var(--bg-300) !important;
 					}
-					
+
 					.list-group-item {
 						background-color: var(--bg-300);
 					}
 				}
 			}
-			
+
 			.border-right {
 				border-right-color: var(--border-200) !important;
 			}
-			
+
 			.border-top {
 				border-top-color: var(--border-200) !important;
 			}
-			
+
 			.input-append .add-on, .input-prepend .add-on {
 				background-color: transparent !important;
 				border-color: var(--border-200);
-				
+
 			}
-			
+
 			img.icon {
 				filter: brightness(1.25);
 			}
 		}
-		
+
 		.message-app {
 			.bg-white {
 				background-color: var(--bg-300) !important;
 			}
-			
+
 			.container-fluid .header-container [data-region="favourite-icon-container"]::after {
 				color: @lms-accent;
 			}
 		}
-		
+
 		/* preferences page */
-		
+
 		#page-user-preferences {
 			#region-main .card-body {
 				border-color: var(--border-200);
 				box-sizing: border-box;
 			}
 		}
-		
+
 		table#form td.submit,
 		.form-buttons,
 		.path-admin .buttons,
-		#fitem_id_submitbutton, 
+		#fitem_id_submitbutton,
 		.fp-content-center form + div,
 		div.backup-section + form,
 		#fgroup_id_buttonar {
 			background-color: var(--bg-200);
 			border-color: var(--border-200);
 		}
-		
+
 		/* popovers */
-		
+
 		.popover {
 			background-color: var(--bg-300);
 			border-color: var(--border-300);
-			
+
 			&.top {
 				.arrow { border-top-color: var(--border-300); }
 				.arrow::after { border-top-color: var(--bg-300); }
 			}
-			
+
 			&.bottom {
 				.arrow { border-bottom-color: var(--border-300); }
 				.arrow::after { border-bottom-color: var(--bg-300); }
 			}
-			
+
 			&.left {
 				.arrow { border-left-color: var(--border-300); }
 				.arrow::after { border-left-color: var(--bg-300); }
 			}
-			
+
 			&.right {
 				.arrow { border-right-color: var(--border-300); }
 				.arrow::after { border-right-color: var(--bg-300); }
 			}
 		}
-		
+
 		.popover-region-container {
 			background-color: var(--bg-300);
 			border-color: var(--border-300);
-			
+
 			img.icon {
 				filter: brightness(2);
 			}
-			
+
 			.content-item-container {
 				border-color: var(--border-300);
-				
+
 				&:hover {
 					color: inherit;
 					background-color: var(--bg-400);
 				}
 			}
 		}
-		
+
 		.popover-region-header-container {
 			border-color: var(--border-300);
 		}
-		
+
 		.popover-region-footer-container {
 			background-color: var(--bg-300);
 			border-color: var(--border-300);
 		}
-		
+
 		/* forum stuff */
-		
+
 		.forumpost {
 			background-color: var(--bg-200);
 			border-color: var(--border-200) !important;
-			
+
 			.header {
 				background: none;
 			}
 		}
-		
+
 		/* tables */
-		
+
 		.generaltable,
 		table.flexible {
 			tbody {
@@ -1599,42 +1599,42 @@
 				> tr:nth-child(odd) > td {
 					background-color: var(--bg-200);
 				}
-				
+
 				> tr:nth-child(even) > th,
 				> tr:nth-child(even) > td {
 					background-color: transparent;
 				}
 			}
-			
+
 			th, td {
 				border-color: var(--border-200);
 			}
 		}
-		
+
 		.path-mod-assign td.submissionstatussubmitted {
 			color: @hc-text-color;
 			background-color: @success-color !important;
 		}
-		
+
 		.path-mod-assign td.submissionnotgraded {
 			color: inherit;
 		}
-		
+
 		/* inputs and form elements */
-		
+
 		input[type="text"],
 		input[type="password"]{
 			color: inherit;
 			background-color: var(--bg-200);
 			border-color: var(--border-200);
 		}
-		
+
 		button,
 		.btn,
 		.btn-default,
 		input.form-submit,
 		input[type="button"],
-		input[type="submit"], 
+		input[type="submit"],
 		[type="reset"],
 		input.form-submit,
 		input#id_submitbutton,
@@ -1645,7 +1645,7 @@
 		#notice .singlebutton + .singlebutton input {
 			background-color: @success-color;
 		}
-		
+
 		.btn-danger,
 		.btn-cancel,
 		#id_cancel.btn,
@@ -1653,70 +1653,70 @@
 		#notice .singlebutton + .singlebutton input {
 			background-color: @danger-color !important;
 		}
-		
+
 		select {
 			color: inherit;
 			background-color: var(--bg-200);
 			border-color: var(--border-200);
 		}
-		
+
 		legend {
 			color: inherit;
 			border-color: var(--border-200);
-			
+
 			> * {
 				color: inherit !important;
 			}
 		}
-		
+
 		.form-group.row.fitem {
 			border-color: var(--border-200);
 		}
-		
+
 		// text editor
 		div.editor_atto_toolbar {
 			background: var(--bg-300);
 			border-color: var(--border-300);
 		}
-		
+
 		.editor_atto_content_wrap {
 			color: inherit;
 			background: var(--bg-200);
 			border-color: var(--border-200);
 		}
-		
+
 		div.editor_atto_toolbar div.atto_group {
 			background: var(--bg-400);
 			border-color: var(--border-400);
-			
+
 			> button {
 				border-color: var(--border-400);
 				transition: all .3s ease !important;
-				
+
 				&:hover {
 					background: var(--bg-300) !important;
 				}
 			}
 		}
-		
+
 		// file manager
 		.filemanager .fp-navbar {
 			background: var(--bg-200) !important;
 			border-color: var(--border-200);
 		}
-		
+
 		.fp-pathbar {
 			border-color: var(--border-200);
 		}
-		
+
 		.editor_atto_toolbar img.icon {
 			filter: brightness(1.4);
 		}
-		
+
 		.editor_atto_toolbar .atto_collapse_button img.icon {
 			filter: invert(1) brightness(2);
 		}
-		
+
 		.fp-toolbar {
 			.fp-btn-add,
 			.fp-btn-download,
@@ -1727,99 +1727,99 @@
 			.fp-tb-refresh {
 				background: var(--bg-300);
 				border-color: var(--border-300);
-				
+
 				> a {
 					background: var(--bg-300);
 				}
 			}
-			
+
 			.fp-btn-delete > a {
 				background: var(--bg-300);
 				border-color: var(--border-300) !important;
 			}
 		}
-		
+
 		.fp-viewbar {
 			background: var(--bg-300);
 			border-color: var(--border-300);
-			
+
 			> a.btn {
 				background: var(--bg-300);
 			}
 		}
-		
+
 		.filemanager a {
 			color: @subtext-color !important;
 		}
-		
+
 		.filemanager-container.card {
 			border-color: var(--border-200);
 		}
-		
+
 		.filepicker-filelist .filepicker-container,
 		.filemanager.fm-noitems .fm-empty-container {
 			border-color: var(--border-300);
 		}
-		
+
 		.dndupload-arrow {
 			filter: invert(0.9) hue-rotate(180deg);
 		}
-		
+
 		/* buttons and link buttons */
-		
+
 		.activity-navigation #next-activity-link:hover,
 		.activity-navigation #prev-activity-link:hover {
 			background: @lms-accent-2 !important;
 		}
-		
+
 		button,
 		.btn {
 			background-color: @success-color;
 		}
-		
+
 		/* dropdowns */
-		
+
 		.dropdown-menu {
 			&,
 			.navbar & {
 				background: var(--bg-300);
 				border-color: var(--border-300);
-			
+
 				> li > a {
 					color: inherit;
 					border-top-color: var(--border-300);
 					border-bottom-color: var(--border-100);
 				}
 			}
-			
+
 			a,
 			a:visited {
 				color: inherit;
 			}
-			
+
 			.navbar & {
 				border-color: @lms-accent;
 			}
 		}
-		
+
 		.moodle-actionmenu .dropdown-item .menu-action-text {
 			color: inherit;
 		}
-		
+
 		.moodle-actionmenu .dropdown-item:hover {
 			background: var(--bg-400);
 			text-decoration: none;
 		}
-		
+
 		.moodle-actionmenu .dropdown-divider .filler,
 		.dropdown-menu .divider,
 		.navbar .dropdown-menu .divider {
 			background: var(--bg-300);
 			border-color: var(--border-300);
 		}
-		
+
 		/* animations */
-		
+
 		@keyframes bg-pulse-grey {
 			0% {
 				background-color: var(--bg-300);
@@ -1831,25 +1831,25 @@
 				background-color: var(--bg-300);
 			}
 		}
-		
+
 		/* typography and misc */
-		
+
 		// headings
 		h1, h2, h3, h4, h5, h6 {
 			color: @subtext-color;
 		}
-		
+
 		// TODO: make this a mixin
 		#page-user-preferences #region-main h2 {
 			background: none;
 			position: relative;
 			isolation: isolate;
-			
+
 			&::before {
 				content: "";
 				position: absolute;
 				background-color: var(--bg-300);
-				
+
 				bottom: 1px;
 				height: 1px;
 				left: 0;
@@ -1857,7 +1857,7 @@
 				z-index: -1;
 			}
 		}
-		
+
 		// links
 		#page-mod-scorm-player .breadcrumb-button a,
 		.block ul.block_tree a,
@@ -1867,54 +1867,54 @@
 		a:focus,
 		a:visited {
 			color: @link-color;
-			
+
 			&:hover {
 				color: @link-color;
 				text-decoration: 1px solid underline currentColor;
 			}
 		}
-		
+
 		a.btn.btn-link {
-			&, 
+			&,
 			[data-container="discussion-tools"] & {
 				color: @link-color !important;
 				border-radius: 0;
-				
+
 				&:hover {
 					color: @link-color !important;
 					background: none !important;
 				}
-				
+
 				&:focus {
 					outline: none;
 				}
 			}
 		}
-		
+
 		.activityinstance a {
 			color: inherit !important;
 		}
-		
+
 		.instancename {
 			color: inherit;
 		}
-		
+
 		.text-muted {
 			color: @subtext-color;
 		}
-		
+
 		.breadcrumb {
 			color: @subtext-color;
-			
+
 			> li {
 				text-shadow: none;
 			}
 		}
-		
+
 		.label.label-info {
 			background-color: @info-color;
 		}
-		
+
 		.dimmed_category,
 		.dimmed_category a,
 		.dimmed_text,
@@ -1932,40 +1932,40 @@
 		a.dimmed_text:visited {
 			color: @dimmed-text !important;
 		}
-		
+
 		// the default transition is absolutely horrible (only applied to :hover, has a delay)
 		a {
 			transition: all .3s ease !important;
 		}
-		
+
 		.moodle-dialogue-base .moodle-dialogue .moodle-dialogue-bd {
 			color: inherit;
 		}
-		
+
 		.border-bottom {
 			border-bottom-color: var(--border-300) !important;
 		}
-		
+
 		.pagination ul > li > a {
 			color: inherit;
 			background-color: var(--bg-300);
 			border-color: var(--border-300);
-			
+
 			&:hover {
 				background-color: var(--bg-400);
 			}
-			
+
 			// so it is properly centered
 			> * {
 				display: inline-block;
 				margin-bottom: 3px;
 			}
 		}
-		
+
 		.pagination ul > li.disabled > a {
 			color: @dimmed-text;
 			background-color: var(--bg-200);
-			
+
 			&:hover,
 			&:focus {
 				color: @dimmed-text;
@@ -1973,11 +1973,11 @@
 				outline: none;
 			}
 		}
-		
+
 		.text-danger > img.icon {
 			filter: invert(1) hue-rotate(180deg);
 		}
-		
+
 		img.defaultuserpic {
 			filter: invert(0.8);
 		}
