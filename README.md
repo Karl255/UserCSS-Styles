@@ -15,7 +15,9 @@ Open the `.user.css` file of the style you want to install in raw mode (direct l
 # Styles
 ## github-monday [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://raw.githubusercontent.com/Karl255/UserCSS-Styles/master/github-monday/github-monday.user.css)
 
-A UserCSS style to fix the calendar's first day of week on GitHub user profiles. This is achived by moving the squares into the positions where they should be.
+A UserCSS style to change the GitHub contribution graph's first day of week on user profiles to Monday instead of Sunday. This is achived by moving the squares into the positions where they should be.
+
+Special thanks to [VChet](https://github.com/VChet) for helping keeping this style up to date with GitHub's changes!
 
 ## your-code-font [![Install directly with Stylus](https://img.shields.io/badge/Install%20directly%20with-Stylus-238b8b.svg)](https://raw.githubusercontent.com/Karl255/UserCSS-Styles/master/your-code-font/your-code-font.user.css)
 
