@@ -13,12 +13,12 @@
 
 @-moz-document domain("github.com") {
 	/* when the activity overview is enabled the grid rects are 10px * 10px (3px spacing) */
-	.mt-4.position-relative > .d-flex .ContributionCalendar-grid {
+	.ContributionCalendar-grid[style*="border-spacing: 3px"] {
 		--dist: 13px;
 	}
 
-	/* but when it's disabled, they're 12px * 12px (3px spacing) */
-	.mt-4.position-relative > .js-yearly-contributions .ContributionCalendar-grid {
+	/* but when it's disabled, they're 11px * 11px (4px spacing) */
+	.ContributionCalendar-grid[style*="border-spacing: 4px"] {
 		--dist: 15px;
 	}
 
