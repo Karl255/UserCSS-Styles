@@ -131,12 +131,6 @@
 		display: none;
 	}
 	
-	/*** dark theme fixes ***/
-	
-	.border-white {
-		border-color: var(--bs-border-color-translucent) !important;
-	}
-	
 	/*** mojtvz.css overrides ***/
 	
 	.btn-mojtvzboja {
@@ -218,6 +212,52 @@
 		//padding: 0px 15px;
 	}
 	
+	/*** datatables fixes ***/
+	
+	.dataTables_wrapper .dataTables_length {
+		color: unset;
+	}
+	
+	button.dt-button,
+	div.dt-button,
+	a.dt-button,
+	input.dt-button,
+	.dataTables_wrapper .dataTables_length,
+	.dataTables_wrapper .dataTables_filter,
+	.dataTables_wrapper .dataTables_info,
+	.dataTables_wrapper .dataTables_processing,
+	.dataTables_wrapper .dataTables_paginate
+	{
+		color: unset;
+	}
+	
+	.dataTables_wrapper .dataTables_paginate .paginate_button {
+		color: inherit !important;
+		
+		&.current,
+		&.current:hover {
+			color: inherit !important;
+			background: linear-gradient(to bottom, rgba(230, 230, 230, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%);
+			border: 1px solid rgba(0, 0, 0, 0.3);
+		}
+	}
+	
+	.dataTables_wrapper .dataTables_length select {
+		background-color: none;
+	}
+	
+	/*** (dark) theme fixes ***/
+	
+	.border-white,
+	.border-light {
+		border-color: var(--bs-border-color-translucent) !important;
+	}
+	
+	.card.border-warning,
+	.card.border-light {
+		border-color: var(--bs-card-border-color) !important;
+	}
+	
 	/*** other fixes ***/
 		
 	body > .container-fluid > .row {
@@ -231,12 +271,36 @@
 		}
 	}
 	
+	body.text-center {
+		text-align: unset !important;
+	}
+	
 	.sadrzaj {
 		margin-block: 2rem;
 	}
 	
 	.sadrzaj + .alert {
 		margin-bottom: 0;
+	}
+	
+	.containter > .card + .card {
+		margin-top: 1rem;
+	}
+	
+	// Bootstrap 5 apparently removed panels?
+	.panel {
+		padding-block: 1rem;
+	}
+	
+	[style*="color: #000000"],
+	[style*="color: black"],
+	[style*="color: #333333"],
+	[style*="color: windowtext"] /* TIL */ {
+		color: inherit !important;
+	}
+	
+	form[name="formac"] > .card + .card {
+		margin-top: 2rem;
 	}
 }
 
