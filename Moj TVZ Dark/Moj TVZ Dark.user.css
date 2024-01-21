@@ -47,6 +47,8 @@
 
 ==/UserStyle== */
 
+@ad-text: "Moj TVZ Dark theme by Karlo Bistrički (https://userstyles.world/style/3078/moj-tvz-dark)";
+
 @-moz-document domain("moj.tvz.hr") {
 	/*** reset ***/
 	
@@ -304,11 +306,16 @@
 	}
 }
 
-@-moz-document url("https://moj.tvz.hr/"), regexp("https://moj\\.tvz\\.hr/studij[A-Za-z0-9]*\\?.*"), regexp("https://moj\\.tvz\\.hr/studij[A-Za-z0-9]*/prikaz/mojtvz\\?.*") {
+@-moz-document url("https://moj.tvz.hr/"), regexp("https://moj\\.tvz\\.hr/studij[A-Za-z0-9]*\\?.*"), regexp("https://moj\\.tvz\\.hr/studij[A-Za-z0-9]*/prikaz/mojtvz\\?.*"),
+regexp("https://moj\\.tvz\\.hr/.*link=prikaz/.*") {
 	// welcome page
 	& when (@hide-profile-picture = 1) {
-		.jumbotron > center > img {
+		.sadrzaj > .row > :first-child > center > :first-child [class*="col"]:has(img) {
 			display: none;
+			
+			+ * {
+				margin-inline: auto;
+			}
 		}
 	}
 }
@@ -1158,8 +1165,6 @@
 	}
 
 	/* shameless advertizing/theme credits */
-
-	@ad-text: "Moj TVZ Dark theme by Karlo Bistrički (https://userstyles.world/style/3078/moj-tvz-dark)";
 
 	& when (@show-credits = 1) {
 		body > .container-fluid > #non-printable > .potpis > .panel.panel-default > .panel-body > .row > .col-xs-6:first-child::before {
