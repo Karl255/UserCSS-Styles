@@ -2,7 +2,7 @@
 @name         Moj TVZ Dark
 @author       Karl_255 (Karlo Bistrički)
 @namespace    github.com/Karl255
-@version      3.0.3
+@version      3.0.4
 @description  Tamna tema za moj.tvz.hr i Grader sustav s mogućnostima za prilagođavanje
 @homepageURL  https://github.com/Karl255/UserCSS-Styles
 @supportURL   https://github.com/Karl255/UserCSS-Styles/issues
@@ -134,6 +134,10 @@
 	}
 	
 	/*** mojtvz.css overrides ***/
+	
+	.danger-mojtvz {
+		background-color: var(--bs-card-bg);
+	}
 	
 	.btn-mojtvzboja {
 		//color: #ffffff;
